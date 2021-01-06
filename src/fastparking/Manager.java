@@ -1,6 +1,6 @@
 package fastparking;
 
-public class Sistema {
+public class Manager {
 	
 	public void receberPagamentos() {
 		
