@@ -1,8 +1,14 @@
 package fastparking;
 
+import java.util.List;
+
 public class Manager {
 	
-	public void receberPagamentos() {
+	public Manager() {
+		
+	}
+	
+	public void receivePayments() {
 		
 	}
 	
