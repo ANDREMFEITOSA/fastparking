@@ -23,16 +23,13 @@ public class Host {
 
 	public void enableGarage(GarageSearch garageSearch) {
 		
-		//this.garage.enable();
 		garageSearch.addAvailableGarages(this.garage);
 		
 	}
 	
 	public void disableGarage(GarageSearch garageSearch) {
 		
-		//this.garage.disable();
 		garageSearch.removeAvailableGarages(this.garage);
-		
 		
 	}
 	
@@ -43,6 +40,10 @@ public class Host {
 	
 	public void confirmCheckOut() {
 		this.garage.setTimeCheckOut(LocalDateTime.now());
+	}
+	
+	public Garage getGarage() {
+		return this.garage;
 	}
 	
 	public void submitComplaint() {
