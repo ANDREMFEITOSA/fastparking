@@ -13,7 +13,6 @@ public class Host {
 	
 	public Host(String name, String cpf, String proofOfAddress, String account,
 			Garage garage, int score) {
-		super();
 		this.name = name;
 		this.cpf = cpf;
 		this.proofOfAddress = proofOfAddress;
@@ -22,22 +21,24 @@ public class Host {
 		this.score = score;
 	}
 
-	public void enableGarage(GarageSearch garageSearc) {
+	public void enableGarage(GarageSearch garageSearch) {
 		
-		this.garage.enable();
-		garageSearc.addAvailableGarages(this.garage);
-		
-	}
-	
-	public void disableGarage() {
-		
-		this.garage.disable();
+		//this.garage.enable();
+		garageSearch.addAvailableGarages(this.garage);
 		
 	}
 	
-	public void confirmCheckIn() {
+	public void disableGarage(GarageSearch garageSearch) {
+		
+		//this.garage.disable();
+		garageSearch.removeAvailableGarages(this.garage);
+		
+		
+	}
+	
+	public void confirmCheckIn(GarageSearch garageSearch) {
 		this.garage.setTimeCheckIn(LocalDateTime.now());
-		this.garage.disable();
+		this.disableGarage(garageSearch);
 	}
 	
 	public void confirmCheckOut() {

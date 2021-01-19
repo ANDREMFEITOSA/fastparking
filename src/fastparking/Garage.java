@@ -5,15 +5,21 @@ import java.time.LocalDateTime;
 
 public class Garage {
 	
-	private boolean availability;
-	private boolean occupation; //variável para indicar a ocupação ou não da garagem
+	//private boolean availability;
+	//private boolean occupation; //variável para indicar a ocupação ou não da garagem
 	private LocalDateTime timeCheckIn; //variável para hora do check in
 	private LocalDateTime timeCheckOut; //variável para hora do check out
 	private BigDecimal price;
-	private String location;
+	private float locationX;
+	private float locationY;
+	
+	public Garage(float loationX, float locatioY) {
+		this.locationX = locationX;
+		this.locationY = locationY;
+	}
 	
 	
-	
+	/*
 	public boolean getAvailability() {
 		return availability;
 	}
@@ -25,20 +31,14 @@ public class Garage {
 	public void disable() {
 		this.availability = false;
 	}
-	
+	*/
 	public BigDecimal getPrice() {
 		return price;
 	}
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
+	
 	public LocalDateTime getTimeCheckIn() {
 		return timeCheckIn;
 	}
@@ -54,7 +54,15 @@ public class Garage {
 	public void setTimeCheckOut(LocalDateTime timeCheckOut) {
 		this.timeCheckOut = timeCheckOut;
 	}
-	
-	
+
+
+	public float getLocationX() {
+		return locationX;
+	}
+
+
+	public float getLocationY() {
+		return locationY;
+	}	
 
 }
