@@ -1,7 +1,6 @@
 package fastparking;
 
-import java.lang.Math;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class GarageSearch {
@@ -11,6 +10,8 @@ public class GarageSearch {
 	float radius;
 	
 	public GarageSearch(float radius) {
+		this.availableGarages = new ArrayList<>();
+		this.nextAvailableGarages = new ArrayList<>();
 		this.radius = radius;
 	}
 	
@@ -36,7 +37,7 @@ public class GarageSearch {
 			posUserY = user.getLocationY();
 			if (this.radius >= Math.sqrt(Math.pow(posGarageX - posUserX, 2) + Math.pow(posGarageY - posUserY, 2)))
 				
-				nextAvailableGarages.add(availableGarages.get(i)); 
+				this.nextAvailableGarages.add(availableGarages.get(i)); 
 		}
 		
 		return this.nextAvailableGarages;
