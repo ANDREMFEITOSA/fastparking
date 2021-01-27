@@ -19,6 +19,7 @@ public class Garage {
 	public BigDecimal getPrice() {
 		return price;
 	}
+	
 	public void setPrice(BigDecimal price) {
 		this.price = price;
 	}
@@ -39,11 +40,9 @@ public class Garage {
 		this.timeCheckOut = timeCheckOut;
 	}
 
-
 	public float getLocationX() {
 		return locationX;
 	}
-
 
 	public float getLocationY() {
 		return locationY;
