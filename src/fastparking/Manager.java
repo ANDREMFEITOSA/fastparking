@@ -16,11 +16,11 @@ public class Manager {
 		
 	}
 	
-	public void receberReclamacao() {
+	public void newComplaint(String complaint) {
 		
 	}
 	
-	public void receberSolicitacaoReembolso() {
+	public void refundSolicitation(String description) {
 		
 	}
 	

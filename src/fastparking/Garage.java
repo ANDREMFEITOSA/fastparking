@@ -10,10 +10,15 @@ public class Garage {
 	private BigDecimal price;
 	private float locationX;
 	private float locationY;
+	private boolean hostConfirmation;
+	private boolean driverConfirmation;
 	
-	public Garage(float loationX, float locatioY) {
+	public Garage(float loationX, float locatioY, BigDecimal price) {
 		this.locationX = locationX;
 		this.locationY = locationY;
+		this.price = price;
+		hostConfirmation = false;
+		driverConfirmation = false;
 	}
 	
 	public BigDecimal getPrice() {
@@ -28,16 +33,36 @@ public class Garage {
 		return timeCheckIn;
 	}
 
-	public void setTimeCheckIn(LocalDateTime timeCheckIn) {
-		this.timeCheckIn = timeCheckIn;
+	public void setTimeCheckIn(Object object) {
+		if(object instanceof Driver) {
+			driverConfirmation = true;
+		}
+		
+		if(object instanceof Host) {
+			hostConfirmation = true;
+		}
+		
+		if(hostConfirmation && driverConfirmation) {
+			this.timeCheckIn = LocalDateTime.now();
+		}		
 	}
 
 	public LocalDateTime getTimeCheckOut() {
 		return timeCheckOut;
 	}
 
-	public void setTimeCheckOut(LocalDateTime timeCheckOut) {
-		this.timeCheckOut = timeCheckOut;
+	public void setTimeCheckOut(Object object) {
+		if(object instanceof Driver) {
+			driverConfirmation = true;
+		}
+		
+		if(object instanceof Host) {
+			hostConfirmation = true;
+		}
+		
+		if(hostConfirmation && driverConfirmation) {
+			this.timeCheckOut = LocalDateTime.now();
+		}
 	}
 
 	public float getLocationX() {

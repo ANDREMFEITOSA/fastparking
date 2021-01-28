@@ -2,44 +2,42 @@ package fastparking;
 
 import java.util.ArrayList;
 
-public class Driver {
-	
+public class Driver {	
 	private String name;
 	private String cpf;
 	private String carDocument;
-	private String card;
-	private int score;
+	private CreditCard card;
+	private float score;
+	private int numberOfEvaluations;
+	private Garage garage;
+	private Manager manager;
 	
-	
-	public void reservarGaragem() {
+	public void reserveGarage() {
 		
 	}
 
-	public void realizarPagamento() {
+	public void pay() {
 		
 	}
 	
-	public void confirmarChackIn() {
-		
+	public void confirmCheckIn() {
+		this.garage.setTimeCheckIn(this);
 	}
 	
-	public void confirmarCheckOut() {
-		
+	public void ConfirmCheckOut() {
+		this.garage.setTimeCheckOut(this);
 	}
 	
-	public void solicitarReembolso() {
-		
+	public void askForRefund(String description) {
+		this.manager.refundSolicitation(description);
 	}
 	
-	public void enviarReclamacao() {
-		
+	public void subimitComplaint(String complaint) {
+		this.manager.newComplaint(complaint);
 	}
 	
-	public void avaliarHost() {
-		
+	public void evaluation(int evaluation) {
+		numberOfEvaluations++;
+		score = (score + evaluation)/numberOfEvaluations;
 	}
-	
-	
-	
-
 }
