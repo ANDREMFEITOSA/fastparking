@@ -24,4 +24,7 @@ public class GarageDatabase {
 		return search.closestGarage(availableGarages, driver);
 	}
 	
+	public int getNumberOfAvailableGarages() {
+		return availableGarages.size();
+	}
 }
