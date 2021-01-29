@@ -6,10 +6,12 @@ import java.util.List;
 public class GarageDatabase {
 	HTTPRequest search;
 	private List<Garage> availableGarages;
+	private float perimeter;
 			
 	public GarageDatabase() {
 		this.availableGarages = new ArrayList<>();
 		this.search = new HTTPRequest();
+		perimeter = 1000;
 	}
 	
 	public void enableGarage(Garage garage) {
@@ -24,7 +26,15 @@ public class GarageDatabase {
 		return search.closestGarage(availableGarages, driver);
 	}
 	
+	public List<Garage> searchTheClosestGarages(Driver driver) {
+		return search.closestGarages(availableGarages, driver, perimeter);
+	}
+	
 	public int getNumberOfAvailableGarages() {
 		return availableGarages.size();
+	}
+	
+	public void setPerimeter(float perimeter){
+		this.perimeter = perimeter;
 	}
 }
