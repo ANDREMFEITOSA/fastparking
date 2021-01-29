@@ -8,17 +8,17 @@ public class Garage {
 	private LocalDateTime timeCheckIn;
 	private LocalDateTime timeCheckOut;
 	private BigDecimal price;
-	private float locationX;
-	private float locationY;
+	private String location;
 	private boolean hostConfirmation;
 	private boolean driverConfirmation;
+	private String name;
 	
-	public Garage(float loationX, float locatioY, BigDecimal price) {
-		this.locationX = locationX;
-		this.locationY = locationY;
+	public Garage(String location, BigDecimal price, String name) {
+		this.location = location;
 		this.price = price;
 		hostConfirmation = false;
 		driverConfirmation = false;
+		this.name = name;
 	}
 	
 	public BigDecimal getPrice() {
@@ -44,6 +44,8 @@ public class Garage {
 		
 		if(hostConfirmation && driverConfirmation) {
 			this.timeCheckIn = LocalDateTime.now();
+			hostConfirmation = false;
+			driverConfirmation = false;
 		}		
 	}
 
@@ -62,15 +64,17 @@ public class Garage {
 		
 		if(hostConfirmation && driverConfirmation) {
 			this.timeCheckOut = LocalDateTime.now();
+			hostConfirmation = false;
+			driverConfirmation = false;
 		}
 	}
 
-	public float getLocationX() {
-		return locationX;
+	public String getLocation() {
+		return location;
 	}
 
-	public float getLocationY() {
-		return locationY;
-	}	
+	public String getName() {
+		return name;
+	};
 
 }
