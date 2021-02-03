@@ -21,36 +21,36 @@ public class Host {
 		this.score = score;
 	}
 
-	public void enableGarage(GarageSearch garageSearch) {
+	public void enableGarage(GarageDatabase garageDatabase) {
 		
-		garageSearch.addAvailableGarages(this.garage);
-		
-	}
-	
-	public void disableGarage(GarageSearch garageSearch) {
-		
-		garageSearch.removeAvailableGarages(this.garage);
+		garageDatabase.enableGarage(this.garage);
 		
 	}
 	
-	public void confirmCheckIn(GarageSearch garageSearch) {
-		this.garage.setTimeCheckIn(LocalDateTime.now());
-		this.disableGarage(garageSearch);
+	public void disableGarage(GarageDatabase garageDatabase) {
+		
+		garageDatabase.disableGarage(this.garage);
+		
+	}
+	
+	public void confirmCheckIn(GarageDatabase garageDatabase) {
+		this.garage.setTimeCheckIn(this);
+		this.disableGarage(garageDatabase);
 	}
 	
 	public void confirmCheckOut() {
-		this.garage.setTimeCheckOut(LocalDateTime.now());
+		this.garage.setTimeCheckOut(this);
 	}
 	
 	public Garage getGarage() {
 		return this.garage;
 	}
 	
-	public void submitComplaint() {
+	public void submitComplaint(GarageDatabase garageDatabase, Driver driver) {
 		
 	}
 	
-	public void evaluateUser() {
+	public void evaluateDriver(GarageDatabase garageDatabase, Driver driver) {
 		
 	}
 
