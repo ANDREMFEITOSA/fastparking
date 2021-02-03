@@ -33,11 +33,11 @@ class GarageSearchTest {
 	@Test
 	void getTheClosestGarage() {
 		GarageSearch test = new GarageSearch();
-		BigDecimal PRICE = new BigDecimal("10");
 		
-		Garage home = new Garage("-1.3688387,-48.4719525", PRICE, "home");
-		Garage momsHome = new Garage("-1.4110308,-48.4732266", PRICE, "momshome");
-		Garage uata = new Garage("-1.4313741,-48.4647346", PRICE, "uata");
+		
+		Garage home = new Garage("-1.3688387,-48.4719525", "home");
+		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome");
+		Garage uata = new Garage("-1.4313741,-48.4647346", "uata");
 		
 		List<Garage> garages = new ArrayList<>();
 		garages.add(home);
@@ -57,11 +57,10 @@ class GarageSearchTest {
 	@Test
 	void getTheClosestGarages() {
 		GarageSearch test = new GarageSearch();
-		BigDecimal PRICE = new BigDecimal("10");
-		
-		Garage home = new Garage("-1.3688387,-48.4719525", PRICE, "home");
-		Garage momsHome = new Garage("-1.4110308,-48.4732266", PRICE, "momshome");
-		Garage uata = new Garage("-1.4313741,-48.4647346", PRICE, "uata");
+				
+		Garage home = new Garage("-1.3688387,-48.4719525", "home");
+		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome");
+		Garage uata = new Garage("-1.4313741,-48.4647346", "uata");
 		
 		List<Garage> garages = new ArrayList<>();
 		garages.add(home);

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GarageDatabase {
-	HTTPRequest search;
+	GarageSearch search;
 	private List<Garage> availableGarages;
 	private float perimeter;
 			
 	public GarageDatabase() {
 		this.availableGarages = new ArrayList<>();
-		this.search = new HTTPRequest();
+		this.search = new GarageSearch();
 		perimeter = 1000;
 	}
 	
