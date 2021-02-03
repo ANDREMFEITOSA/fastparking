@@ -9,11 +9,11 @@ import java.util.List;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class HTTPRequestTest {
+class GarageSearchTest {
 
 	@Test
 	void requestTest() {
-		HTTPRequest test = new HTTPRequest();
+		GarageSearch test = new GarageSearch();
 		String house = "-1.3688387,-48.4719525|-1.4110308,-48.4732266";
 		String uata = "-1.4313741,-48.4647346";
 		
@@ -22,7 +22,7 @@ class HTTPRequestTest {
 	
 	@Test
 	void integerDistancesValuesTest() {
-		HTTPRequest test = new HTTPRequest();
+		GarageSearch test = new GarageSearch();
 		String house = "-1.3688387,-48.4719525|-1.4110308,-48.4732266";
 		String uata = "-1.4313741,-48.4647346";
 		
@@ -32,7 +32,7 @@ class HTTPRequestTest {
 	
 	@Test
 	void getTheClosestGarage() {
-		HTTPRequest test = new HTTPRequest();
+		GarageSearch test = new GarageSearch();
 		BigDecimal PRICE = new BigDecimal("10");
 		
 		Garage home = new Garage("-1.3688387,-48.4719525", PRICE, "home");
@@ -56,7 +56,7 @@ class HTTPRequestTest {
 	
 	@Test
 	void getTheClosestGarages() {
-		HTTPRequest test = new HTTPRequest();
+		GarageSearch test = new GarageSearch();
 		BigDecimal PRICE = new BigDecimal("10");
 		
 		Garage home = new Garage("-1.3688387,-48.4719525", PRICE, "home");
