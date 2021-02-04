@@ -1,6 +1,7 @@
 package fastparking;
 
 import java.math.BigDecimal;
+import java.text.NumberFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -8,47 +9,50 @@ public class Payment {
 	
 	private BigDecimal rentalPrice;
 	
-	private float serviceFee;
+	private BigDecimal serviceFee;
 	
 	private Host host;
 	
-	private User user;
+	private Driver driver;
 	
-	public Payment(BigDecimal rentalPrice, float serviceFee, Host host, User user) {
-		this.rentalPrice = rentalPrice;
+	public Payment(Host host, Driver driver, BigDecimal serviceFee) {
 		this.serviceFee = serviceFee;
 		this.host = host;
-		this.user = user;
+		this.driver = driver;
 	}
 	
-	public BigDecimal hostPaymentAmount() {
+	public double getDuration(){
 		
-		final LocalDateTime timeCheckIn = this.host.getGarage().getTimeCheckIn();
+		LocalDateTime timeCheckIn = this.host.getGarage().getTimeCheckIn();
 		
-		final LocalDateTime timeCheckOut = this.host.getGarage().getTimeCheckOut();
+		LocalDateTime timeCheckOut = this.host.getGarage().getTimeCheckOut();
 		
 		Duration duration = Duration.between(timeCheckOut, timeCheckIn);
 		
-		final BigDecimal factorTime = new BigDecimal(duration.toMinutes());
-		
-		final BigDecimal fee = new BigDecimal(this.serviceFee);
-		
-		return this.rentalPrice.multiply(factorTime).multiply(BigDecimal.ONE.subtract(fee));
+		return duration.toHours();
 	}
 	
-	public BigDecimal userPaymentAmount() {
-		
-		final LocalDateTime timeCheckIn = this.host.getGarage().getTimeCheckIn();
-		
-		final LocalDateTime timeCheckOut = this.host.getGarage().getTimeCheckOut();
-		
-		Duration duration = Duration.between(timeCheckOut, timeCheckIn);
-		
-		final BigDecimal factorTime = new BigDecimal(duration.toMinutes());
-		
-		final BigDecimal fee = new BigDecimal(this.serviceFee);
-		
-		return this.rentalPrice.multiply(factorTime);
+	public BigDecimal getRentalPrice() {
+		this.rentalPrice = this.host.getGarage().getPrice();
+		return rentalPrice;
 	}
-
+	
+	public String hostPaymentAmount(BigDecimal rentalPrice, double duration) {
+		
+		
+		BigDecimal factorTime = new BigDecimal(duration);
+		
+		BigDecimal amount = rentalPrice.multiply(factorTime).multiply(BigDecimal.ONE.subtract(serviceFee));
+		
+		return NumberFormat.getCurrencyInstance().format(amount);
+	}
+	
+	public String driverPaymentAmount(BigDecimal rentalPrice, double duration) {
+		
+		BigDecimal factorTime = new BigDecimal(duration);
+		
+		BigDecimal amount = rentalPrice.multiply(factorTime);
+		
+		return NumberFormat.getCurrencyInstance().format(amount);
+	}
 }
