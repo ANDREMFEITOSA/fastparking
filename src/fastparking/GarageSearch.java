@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class GarageSearch {
 	//Method1: java.net.HttpURLConnection
 	private static HttpURLConnection connection;
-	private String key = "";
+	private String key = "AIzaSyDqGIMchOeXPAlfe1qzQjAlUt5QVf6lh8s";
 	private BufferedReader reader;
 	private String line;
 	private StringBuffer responseContent = new StringBuffer();
