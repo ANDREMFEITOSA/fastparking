@@ -61,35 +61,6 @@ class GarageDatabaseTest {
 	}
 	
 	@Test
-	void closestGaragesTest() {
-		Garage garage1 = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE");
-		Garage garage2 = new Garage("-1.4454059,-48.4859705", "UATA?!UMARIZAL");
-		Garage garage3 = new Garage("-1.3566207,-48.4537499", "UATA?!AUGUSTOMONTENEGRO");
-		
-		Driver jhow = new Driver();
-		jhow.setLocation("-1.3688387,-48.4719525");
-		
-		Routes routes = new Routes();
-		GarageDatabase data = new GarageDatabase(routes);
-		data.enableGarage(garage1);
-		data.enableGarage(garage2);
-		data.enableGarage(garage3);
-		data.setPerimeter(11000);
-		
-		/*List<Garage> closestGarages = data.searchTheClosestGarages(jhow);
-		
-		List<Garage> closestGaragesExpected = new ArrayList<>();
-		closestGaragesExpected.add(garage1);
-		closestGaragesExpected.add(garage3);
-		
-		for(int i = 0; i < closestGarages.size(); i++) {
-			System.out.println(closestGarages.get(i).getName());
-		}		
-		
-		Assertions.assertEquals(closestGaragesExpected, closestGarages);*/
-	}
-	
-	@Test
 	void showRouteTest() {
 		Routes routes = new Routes();
 		GarageDatabase data = new GarageDatabase(routes);

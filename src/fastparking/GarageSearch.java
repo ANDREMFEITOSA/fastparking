@@ -122,37 +122,6 @@ public class GarageSearch {
 		return garages.get(position);
 	}
 
-	public List<Integer> getTheClosestGaragesPosition(List<Float> garagesDistances, 
-			float perimeter){
-		List<Integer> garagesPosition = new ArrayList<>();
-		
-		for(int i = 0; i < garagesDistances.size(); i++) {
-			if(garagesDistances.get(i) <= perimeter/1000) {
-				garagesPosition.add(i);
-			}
-		}
-		
-		return garagesPosition;
-	}
-
-	public List<Garage> closestGarages(List<Garage> garages, Driver driver, float perimeter) {
-		String origin = driver.getLocation();
-		String destination = this.formattingDestinationString(garages);
-		
-		this.request(origin, destination);
-		
-		List<Integer> positions = this.getTheClosestGaragesPosition(this.distancesValues(), 
-				perimeter);
-		
-		List<Garage> closestsGarages = new ArrayList<>();
-		
-		for(int i = 0; i < positions.size(); i++) {
-			closestsGarages.add(garages.get(positions.get(i)));
-		}
-		
-		return closestsGarages;
-	}
-	
 	public void openFile(String url) {
 		File htmlFile = new File(url);
 		
