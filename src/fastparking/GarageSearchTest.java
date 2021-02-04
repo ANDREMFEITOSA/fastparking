@@ -35,7 +35,10 @@ class GarageSearchTest {
 		
 		String casota = "-1.4078921,-48.4658382";
 		
-		Driver jhow = new Driver();
+		Routes route = new Routes();
+		GarageDatabase data = new GarageDatabase(route);
+		Driver jhow = new Driver(data);
+
 		jhow.setLocation(casota);
 		
 		//Garage closest = test.closestGarage(garages, jhow);
