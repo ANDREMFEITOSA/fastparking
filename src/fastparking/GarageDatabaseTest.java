@@ -44,14 +44,16 @@ class GarageDatabaseTest {
 		Garage garage2 = new Garage("-1.4454059,-48.4859705", "UATA?!UMARIZAL");
 		Garage garage3 = new Garage("-1.3566207,-48.4537499", "UATA?!AUGUSTOMONTENEGRO");
 		
-		Driver jhow = new Driver();
-		jhow.setLocation("-1.3688387,-48.4719525");
+		
 		
 		Routes routes = new Routes();
 		GarageDatabase data = new GarageDatabase(routes);
 		data.enableGarage(garage1);
 		data.enableGarage(garage2);
 		data.enableGarage(garage3);
+		
+		Driver jhow = new Driver(data);
+		jhow.setLocation("-1.3688387,-48.4719525");
 		
 		//Garage closestGarage = data.searchTheClosestGarage(jhow);
 		
