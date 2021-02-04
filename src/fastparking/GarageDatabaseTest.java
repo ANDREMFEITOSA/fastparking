@@ -13,7 +13,8 @@ class GarageDatabaseTest {
 
 	@Test
 	void enableGarageTest() {
-		GarageDatabase data = new GarageDatabase();
+		Routes routes = new Routes();
+		GarageDatabase data = new GarageDatabase(routes);
 		
 		Garage garage = new Garage("-1.4758618,-48.457288", "garage");
 		
@@ -24,7 +25,8 @@ class GarageDatabaseTest {
 	
 	@Test
 	void disableGarageTest() {
-		GarageDatabase data = new GarageDatabase();
+		Routes routes = new Routes();
+		GarageDatabase data = new GarageDatabase(routes);
 		
 		Garage garage1 = new Garage("-1.4758618,-48.457288", "garage1");
 		Garage garage2 = new Garage("-1.4758618,-48.457288", "garage2");
@@ -45,7 +47,8 @@ class GarageDatabaseTest {
 		Driver jhow = new Driver();
 		jhow.setLocation("-1.3688387,-48.4719525");
 		
-		GarageDatabase data = new GarageDatabase();
+		Routes routes = new Routes();
+		GarageDatabase data = new GarageDatabase(routes);
 		data.enableGarage(garage1);
 		data.enableGarage(garage2);
 		data.enableGarage(garage3);
@@ -66,13 +69,14 @@ class GarageDatabaseTest {
 		Driver jhow = new Driver();
 		jhow.setLocation("-1.3688387,-48.4719525");
 		
-		GarageDatabase data = new GarageDatabase();
+		Routes routes = new Routes();
+		GarageDatabase data = new GarageDatabase(routes);
 		data.enableGarage(garage1);
 		data.enableGarage(garage2);
 		data.enableGarage(garage3);
 		data.setPerimeter(11000);
 		
-		List<Garage> closestGarages = data.searchTheClosestGarages(jhow);
+		/*List<Garage> closestGarages = data.searchTheClosestGarages(jhow);
 		
 		List<Garage> closestGaragesExpected = new ArrayList<>();
 		closestGaragesExpected.add(garage1);
@@ -82,6 +86,13 @@ class GarageDatabaseTest {
 			System.out.println(closestGarages.get(i).getName());
 		}		
 		
-		Assertions.assertEquals(closestGaragesExpected, closestGarages);
+		Assertions.assertEquals(closestGaragesExpected, closestGarages);*/
+	}
+	
+	@Test
+	void showRouteTest() {
+		Routes routes = new Routes();
+		GarageDatabase data = new GarageDatabase(routes);
+		data.showRoute("-1.3688387,-48.4719525", "-1.4313795,-48.4625459");
 	}
 }

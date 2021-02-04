@@ -1,6 +1,8 @@
 package fastparking;
 
+import java.awt.Desktop;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -35,21 +37,22 @@ public class GarageSearch {
 			
 			int status = connection.getResponseCode();
 			
-			if(status > 299) {
-				reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
-				
-				while((line = reader.readLine()) != null) {
-					responseContent.append(line);
-				}
-				
-				reader.close();
-			}else {
+			if(status < 299) {
 				reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 				
 				while((line = reader.readLine()) != null) {
 					if (line.contains("km")) {
 						distances.add(line);
 					}
+				}
+				
+				reader.close();
+				
+			}else {
+				reader = new BufferedReader(new InputStreamReader(connection.getErrorStream()));
+				
+				while((line = reader.readLine()) != null) {
+					responseContent.append(line);
 				}
 				
 				reader.close();
@@ -148,5 +151,23 @@ public class GarageSearch {
 		}
 		
 		return closestsGarages;
+	}
+	
+	public void openFile(String url) {
+		File htmlFile = new File(url);
+		
+		try {
+			Desktop.getDesktop().browse(htmlFile.toURI());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void showRoute(int routeNumber) {
+		String fileName = "route" + routeNumber + ".html";
+		String path = "C:\\Users\\Jhoylan Gonçalves\\Desktop\\arquivos_java\\fastparking\\" 
+				+ fileName;
+		this.openFile(path);
 	}
 }

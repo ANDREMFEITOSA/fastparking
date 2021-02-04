@@ -7,9 +7,10 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Route {
+public class Routes {
+	private int routeNumber = 1;
 	
-	public void calculatingRoute(String fileName, String origin, String destination) {
+	public void calculatingRoute(String origin, String destination) {
 		String line1 = "<iframe";
 		String line2 = "  width=\"900\"";
 		String line3 = "  height=\"500\"";
@@ -28,6 +29,9 @@ public class Route {
 		lines.add(line5);
 		lines.add(line6);
 		
+		String fileName = "route";
+		fileName += routeNumber + ".html";
+		
 		File htmlFile = new File(fileName);
 		
 		try {
@@ -43,5 +47,10 @@ public class Route {
 			System.out.println("The file wasn't found");
 		}
 		
+		this.routeNumber++;
+	}
+	
+	public int getRouteNumber() {
+		return this.routeNumber;
 	}
 }

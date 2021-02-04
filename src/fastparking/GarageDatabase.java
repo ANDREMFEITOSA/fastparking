@@ -7,11 +7,13 @@ public class GarageDatabase {
 	GarageSearch search;
 	private List<Garage> availableGarages;
 	private float perimeter;
+	private Routes route;
 			
-	public GarageDatabase() {
-		this.availableGarages = new ArrayList<>();
+	public GarageDatabase(Routes routes) {
 		this.search = new GarageSearch();
-		perimeter = 1000;
+		this.availableGarages = new ArrayList<>();
+		this.route = routes;
+		this.perimeter = 1000;
 	}
 	
 	public void enableGarage(Garage garage) {
@@ -36,5 +38,11 @@ public class GarageDatabase {
 	
 	public void setPerimeter(float perimeter){
 		this.perimeter = perimeter;
+	}
+	
+	public void showRoute(String origin, String destination) {
+		int routeNumber = this.route.getRouteNumber();
+		this.route.calculatingRoute(origin, destination);
+		this.search.showRoute(routeNumber);
 	}
 }
