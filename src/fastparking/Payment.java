@@ -19,9 +19,10 @@ public class Payment {
 		this.serviceFee = serviceFee;
 		this.host = host;
 		this.driver = driver;
+		this.rentalPrice = this.host.getGarage().getPrice();
 	}
 	
-	public double getDuration(){
+	public BigDecimal getDuration(){
 		
 		LocalDateTime timeCheckIn = this.host.getGarage().getTimeCheckIn();
 		
@@ -29,30 +30,21 @@ public class Payment {
 		
 		Duration duration = Duration.between(timeCheckOut, timeCheckIn);
 		
-		return duration.toHours();
+		return BigDecimal.valueOf(duration.toHours());
 	}
 	
-	public BigDecimal getRentalPrice() {
-		this.rentalPrice = this.host.getGarage().getPrice();
-		return rentalPrice;
+	public BigDecimal hostPaymentAmount(BigDecimal duration) {
+		
+		BigDecimal amount = rentalPrice.multiply(duration).multiply(BigDecimal.ONE.subtract(serviceFee));
+		
+		return amount;
 	}
 	
-	public String hostPaymentAmount(BigDecimal rentalPrice, double duration) {
+	public BigDecimal driverPaymentAmount(BigDecimal duration) {
 		
+		BigDecimal amount = rentalPrice.multiply(duration);
 		
-		BigDecimal factorTime = new BigDecimal(duration);
-		
-		BigDecimal amount = rentalPrice.multiply(factorTime).multiply(BigDecimal.ONE.subtract(serviceFee));
-		
-		return NumberFormat.getCurrencyInstance().format(amount);
+		return amount;
 	}
 	
-	public String driverPaymentAmount(BigDecimal rentalPrice, double duration) {
-		
-		BigDecimal factorTime = new BigDecimal(duration);
-		
-		BigDecimal amount = rentalPrice.multiply(factorTime);
-		
-		return NumberFormat.getCurrencyInstance().format(amount);
-	}
 }
