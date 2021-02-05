@@ -27,6 +27,7 @@ public class Garage {
 		this.name = name;
 		this.searchesTime = new ArrayList<>();
 		driverIsInTheGarage = false;
+		closeTime = null;
 	}
 	
 	public BigDecimal getPrice() {
@@ -153,6 +154,10 @@ public class Garage {
 	public void setCloseTime(int operatingTime) {
 		LocalDateTime now = LocalDateTime.now();
 		this.closeTime = now.plusHours(operatingTime);
+	}
+	
+	public LocalDateTime getCloseTime() {
+		return this.closeTime;
 	}
 }
 
