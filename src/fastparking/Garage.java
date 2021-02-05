@@ -153,7 +153,7 @@ public class Garage {
 	
 	public void setCloseTime(int operatingTime) {
 		LocalDateTime now = LocalDateTime.now();
-		this.closeTime = now.plusHours(operatingTime);
+		this.closeTime = now.plusSeconds(operatingTime);
 	}
 	
 	public LocalDateTime getCloseTime() {
