@@ -1,5 +1,6 @@
 package fastparking;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +24,11 @@ public class GarageDatabase {
 	}
 	
 	public Garage searchTheClosestGarage(Driver driver) {
-		return search.closestGarage(availableGarages, driver);
+		if(this.possibleGarages(driver).size() > 0) {
+			return search.closestGarage(this.possibleGarages(driver), driver);
+		}else {
+			return null;
+		}		
 	}
 	
 	public int getNumberOfAvailableGarages() {
@@ -34,5 +39,21 @@ public class GarageDatabase {
 		int routeNumber = this.route.getRouteNumber();
 		this.route.calculatingRoute(origin, destination);
 		this.search.showRoute(routeNumber);
+	}
+	
+	public List<Garage> possibleGarages(Driver driver){
+		List<Garage> possibleGarages = new ArrayList<>();
+		
+		for(int i = 0; i < availableGarages.size(); i++) {
+			LocalDateTime driverActualTime = LocalDateTime.now();
+			LocalDateTime driverLeavingTime = driverActualTime.plusSeconds
+					(driver.getReservationTime());
+			
+			if(driverLeavingTime.isBefore(availableGarages.get(i).getCloseTime())) {
+				possibleGarages.add(availableGarages.get(i));
+			}
+		}
+		
+		return possibleGarages;
 	}
 }
