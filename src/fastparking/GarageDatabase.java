@@ -46,10 +46,10 @@ public class GarageDatabase {
 		
 		for(int i = 0; i < availableGarages.size(); i++) {
 			LocalDateTime driverActualTime = LocalDateTime.now();
-			LocalDateTime driverLeavingTime = driverActualTime.plusSeconds
+			LocalDateTime driverDepartureTime = driverActualTime.plusSeconds
 					(driver.getReservationTime());
 			
-			if(driverLeavingTime.isBefore(availableGarages.get(i).getCloseTime())) {
+			if(driverDepartureTime.isBefore(availableGarages.get(i).getCloseTime())) {
 				possibleGarages.add(availableGarages.get(i));
 			}
 		}
