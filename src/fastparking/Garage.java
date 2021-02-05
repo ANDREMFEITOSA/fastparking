@@ -9,6 +9,7 @@ public class Garage {
 	
 	private LocalDateTime timeCheckIn;
 	private LocalDateTime timeCheckOut;
+	private LocalDateTime closeTime;
 	private List<Integer> searchesTime;
 	private BigDecimal price;
 	private String status;
@@ -16,14 +17,16 @@ public class Garage {
 	private String name;
 	private boolean hostConfirmation;
 	private boolean driverConfirmation;
+	private boolean driverIsInTheGarage;
 	
 	
 	public Garage(String location, String name) {
 		this.location = location;
-		hostConfirmation = false;
-		driverConfirmation = false;
+		this.hostConfirmation = false;
+		this.driverConfirmation = false;
 		this.name = name;
-		searchesTime = new ArrayList<>();
+		this.searchesTime = new ArrayList<>();
+		driverIsInTheGarage = false;
 	}
 	
 	public BigDecimal getPrice() {
@@ -49,6 +52,7 @@ public class Garage {
 	public void setTimeCheckIn(Object object) {
 		if(object instanceof Driver) {
 			driverConfirmation = true;
+			driverIsInTheGarage = true;
 		}
 		
 		if(object instanceof Host) {
@@ -69,6 +73,7 @@ public class Garage {
 	public void setTimeCheckOut(Object object) {
 		if(object instanceof Driver) {
 			driverConfirmation = true;
+			driverIsInTheGarage = false;
 		}
 		
 		if(object instanceof Host) {
@@ -140,6 +145,14 @@ public class Garage {
 		
 		return this.status;
 	}
-
+	
+	public boolean driverIsInTheGarage() {
+		return this.driverIsInTheGarage;
+	}
+	
+	public void setCloseTime(int operatingTime) {
+		LocalDateTime now = LocalDateTime.now();
+		this.closeTime = now.plusHours(operatingTime);
+	}
 }
 
