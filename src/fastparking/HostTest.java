@@ -1,7 +1,6 @@
 package fastparking;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
@@ -17,9 +16,9 @@ class HostTest {
 		
 		GarageDatabase garageDatabase = new GarageDatabase(route);
 		
-		Garage garage_joao = new Garage("Antônio Barreto", "Uata");
-		Garage garage_paulo = new Garage("Boa Ventura", "Vikings");
-		Garage garage_andre = new Garage("Oliveira Belo", "El Patron");
+		Garage garage_joao = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
+		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
+		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
 		Host host_joao = new Host("João", "111.000.000-01", "xxx", "000000", garage_joao, 10);
 		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "000000", garage_paulo, 10);
@@ -38,9 +37,9 @@ class HostTest {
 		
 		GarageDatabase garageDatabase = new GarageDatabase(route);
 		
-		Garage garage_joao = new Garage("Antônio Barreto", "Uata");
-		Garage garage_paulo = new Garage("Boa Ventura", "Vikings");
-		Garage garage_andre = new Garage("Oliveira Belo", "El Patron");
+		Garage garage_joao = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
+		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
+		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
 		Host host_joao = new Host("João", "111.000.000-01", "xxx", "000000", garage_joao, 10);
 		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "000000", garage_paulo, 10);
@@ -61,9 +60,9 @@ class HostTest {
 		
 		GarageDatabase garageDatabase = new GarageDatabase(route);
 		
-		Garage garage_joao = new Garage("Antônio Barreto", "Uata");
-		Garage garage_paulo = new Garage("Boa Ventura", "Vikings");
-		Garage garage_andre = new Garage("Oliveira Belo", "El Patron");
+		Garage garage_joao = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
+		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
+		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
 		Host host_joao = new Host("João", "111.000.000-01", "xxx", "000000", garage_joao, 10);
 		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "000000", garage_paulo, 10);
@@ -73,10 +72,10 @@ class HostTest {
 		host_paulo.enableGarage(garageDatabase);
 		host_andre.enableGarage(garageDatabase);
 		
-		Driver driver_pedro = new Driver(garageDatabase);
+		Driver driver_pedro = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"));
 		host_joao.getGarage().setTimeCheckIn(driver_pedro);
 		
-		Driver driver_tiago = new Driver(garageDatabase);
+		Driver driver_tiago = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"));
 		host_paulo.getGarage().setTimeCheckIn(driver_tiago);
 		
 		host_joao.confirmCheckIn(garageDatabase);

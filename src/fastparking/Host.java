@@ -19,6 +19,7 @@ public class Host {
 		this.account = account;
 		this.garage = garage;
 		this.score = score;
+		this.garage.setHost(this);
 	}
 
 	public void enableGarage(GarageDatabase garageDatabase) {
