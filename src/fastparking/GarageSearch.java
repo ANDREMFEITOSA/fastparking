@@ -15,15 +15,13 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class GarageSearch {
-	//Method1: java.net.HttpURLConnection
 	private static HttpURLConnection connection;
 	private String key = "AIzaSyDqGIMchOeXPAlfe1qzQjAlUt5QVf6lh8s";
 	private BufferedReader reader;
 	private String line;
 	private StringBuffer responseContent = new StringBuffer();
 	private List<String> distances = new ArrayList<>();
-	private int lines = 0;
-	
+		
 	public void request(String origin, String destination) {
 		try {
 			URL url = new URL("https://maps.googleapis.com/maps/api/distancematrix/json?"

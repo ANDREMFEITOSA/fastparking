@@ -15,8 +15,8 @@ class GarageDatabaseTest {
 	void enableGarageTest() {
 		Routes routes = new Routes();
 		GarageDatabase data = new GarageDatabase(routes);
-		
-		Garage garage = new Garage("-1.4758618,-48.457288", "garage");
+		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		Garage garage = new Garage("-1.4758618,-48.457288", "garage", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		
 		data.enableGarage(garage);
 		
@@ -27,9 +27,9 @@ class GarageDatabaseTest {
 	void disableGarageTest() {
 		Routes routes = new Routes();
 		GarageDatabase data = new GarageDatabase(routes);
-		
-		Garage garage1 = new Garage("-1.4758618,-48.457288", "garage1");
-		Garage garage2 = new Garage("-1.4758618,-48.457288", "garage2");
+		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		Garage garage1 = new Garage("-1.4758618,-48.457288", "garage1",CONSTANT_LENGTH, CONSTANT_LENGTH);
+		Garage garage2 = new Garage("-1.4758618,-48.457288", "garage2", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		
 		data.enableGarage(garage1);
 		data.enableGarage(garage2);
@@ -40,9 +40,10 @@ class GarageDatabaseTest {
 	
 	@Test
 	void closestGarageTest() {
-		Garage garage1 = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE");
-		Garage garage2 = new Garage("-1.4454059,-48.4859705", "UATA?!UMARIZAL");
-		Garage garage3 = new Garage("-1.3566207,-48.4537499", "UATA?!AUGUSTOMONTENEGRO");
+		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		Garage garage1 = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE",CONSTANT_LENGTH, CONSTANT_LENGTH);
+		Garage garage2 = new Garage("-1.4454059,-48.4859705", "UATA?!UMARIZAL",CONSTANT_LENGTH, CONSTANT_LENGTH);
+		Garage garage3 = new Garage("-1.3566207,-48.4537499", "UATA?!AUGUSTOMONTENEGRO",CONSTANT_LENGTH, CONSTANT_LENGTH);
 		
 		
 		

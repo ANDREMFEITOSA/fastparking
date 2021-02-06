@@ -12,7 +12,8 @@ class GarageTest {
 
 	@Test
 	void priceTest() {
-		Garage garage = new Garage("location", "name");
+		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		Garage garage = new Garage("location", "name", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		
 		for(int i = 0; i < 10; i++) {
 			garage.newSearch();

@@ -7,16 +7,17 @@ public class Driver {
 	private String name;
 	private String cpf;
 	private String carDocument;
+	private String location;
 	private CreditCard card;
 	private float score;
 	private int numberOfEvaluations;
 	private Garage garage;
-	private Manager manager;
-	private String location;
+	private Manager manager;	
 	private GarageDatabase garageDatabase;
 	private Routes route;
 	private Reservation reservation;
 	private int reservationTime;
+	private Car car;
 	
 	Driver(GarageDatabase garageDatabase){
 		this.garageDatabase = garageDatabase;

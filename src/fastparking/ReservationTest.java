@@ -2,6 +2,8 @@ package fastparking;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.math.BigDecimal;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +11,8 @@ class ReservationTest {
 
 	@Test
 	void driverIsOffTheGarageReservationTest() throws InterruptedException {
-		Garage garage = new Garage("location","name");
+		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		Garage garage = new Garage("location","name", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		Routes routes = new Routes();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
 		new Reservation(1, garage, garagaDatabase);
@@ -20,7 +23,8 @@ class ReservationTest {
 	
 	@Test
 	void cancelReservation() throws InterruptedException {
-		Garage garage = new Garage("location","name");
+		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		Garage garage = new Garage("location","name", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		Routes routes = new Routes();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
 		Reservation reservation = new Reservation(3, garage, garagaDatabase);

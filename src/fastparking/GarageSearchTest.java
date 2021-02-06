@@ -12,21 +12,12 @@ import org.junit.jupiter.api.Test;
 class GarageSearchTest {
 
 	@Test
-	void requestTest() {
-		GarageSearch test = new GarageSearch();
-		String house = "-1.3688387,-48.4719525|-1.4110308,-48.4732266";
-		String uata = "-1.4313741,-48.4647346";
-		
-		//test.request(uata, house);
-	}
-	
-	@Test
 	void getTheClosestGarage() {
 		GarageSearch test = new GarageSearch();
-				
-		Garage home = new Garage("-1.3688387,-48.4719525", "home");
-		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome");
-		Garage uata = new Garage("-1.4313741,-48.4647346", "uata");
+		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		Garage home = new Garage("-1.3688387,-48.4719525", "home",CONSTANT_LENGTH, CONSTANT_LENGTH);
+		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome",CONSTANT_LENGTH, CONSTANT_LENGTH);
+		Garage uata = new Garage("-1.4313741,-48.4647346", "uata",CONSTANT_LENGTH, CONSTANT_LENGTH);
 		
 		List<Garage> garages = new ArrayList<>();
 		garages.add(home);
