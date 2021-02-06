@@ -1,5 +1,6 @@
 package fastparking;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,17 +44,23 @@ public class GarageDatabase {
 
 	public List<Garage> possibleGarages(Driver driver) {
 		List<Garage> possibleGarages = new ArrayList<>();
-
+		BigDecimal widthSpace = new BigDecimal("1.5");
+		BigDecimal lengthSpace = new BigDecimal("0.5");
+		
 		LocalDateTime driverActualTime = LocalDateTime.now();
 		LocalDateTime driverDepartureTime = driverActualTime
 				.plusSeconds(driver.getReservationTime());
 		
 		for(int i = 0; i < availableGarages.size(); i++) {
-			if (driverDepartureTime.isBefore(availableGarages.get(i).getCloseTime())) {
+			if (driverDepartureTime.isBefore(availableGarages.get(i).getCloseTime()) 
+					&& availableGarages.get(i).getLength().
+						compareTo(driver.getCar().getLength().add(lengthSpace)) > -1
+							&& availableGarages.get(i).getWidth().
+								compareTo(driver.getCar().getWidth().add(widthSpace)) > -1) {
 				possibleGarages.add(availableGarages.get(i));
 			}
 		}		
-			
+		
 		return possibleGarages;
 	}
 }
