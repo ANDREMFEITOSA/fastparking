@@ -21,6 +21,8 @@ public class Garage {
 	private boolean driverIsInTheGarage;
 	private BigDecimal width;
 	private BigDecimal length;
+	private Host host;
+	private Driver driver;
 	
 	public Garage(String location, String name, BigDecimal length, BigDecimal width) {
 		this.location = location;
@@ -56,8 +58,10 @@ public class Garage {
 
 	public void setTimeCheckIn(Object object) {
 		if(object instanceof Driver) {
+			Driver driver = (Driver) object;
+			this.driver = driver;
 			driverConfirmation = true;
-			driverIsInTheGarage = true;
+			driverIsInTheGarage = true;			
 		}
 		
 		if(object instanceof Host) {
@@ -181,6 +185,18 @@ public class Garage {
 	
 	public BigDecimal getLength() {
 		return this.length;
+	}
+	
+	public Host getHost() {
+		return this.host;
+	}
+	
+	public Driver getDriver() {
+		return this.driver;
+	}
+	
+	public void setHost(Host host) {
+		this.host = host;
 	}
 }
 
