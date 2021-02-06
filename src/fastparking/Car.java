@@ -16,4 +16,12 @@ public class Car {
 		width = specifications.getWidth();
 		length = specifications.getLength();
 	}
+	
+	public BigDecimal getWidth() {
+		return this.width;
+	}
+	
+	public BigDecimal getLength() {
+		return this.length;
+	}
 }
