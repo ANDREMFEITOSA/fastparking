@@ -1,6 +1,7 @@
 package fastparking;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -158,6 +159,12 @@ public class Garage {
 	
 	public LocalDateTime getCloseTime() {
 		return this.closeTime;
+	}
+	
+	public BigDecimal getDuration(){		
+		Duration duration = Duration.between(timeCheckIn, timeCheckOut);
+		
+		return BigDecimal.valueOf(duration.toSeconds());
 	}
 }
 
