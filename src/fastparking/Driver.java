@@ -15,28 +15,46 @@ public class Driver {
 	private String location;
 	private GarageDatabase garageDatabase;
 	private Routes route;
+	private Reservation reservation;
+	private int reservationTime;
 	
 	Driver(GarageDatabase garageDatabase){
 		this.garageDatabase = garageDatabase;
 	}
 	
 	public void reserveGarage() {
-		this.garage = garageDatabase.searchTheClosestGarage(this);
-		garageDatabase.disableGarage(garage);	
-		garageDatabase.showRoute(this.location, this.garage.getLocation());
+		Scanner in = new Scanner(System.in);
 		
-		Scanner in = new Scanner(System.in); 
-		 
-		System.out.println("Do you wanna reserv this garage? yes or no");
-        String answer = in.nextLine(); 
+		System.out.println("How many time do you wanna for your reservation?");
+        this.reservationTime = in.nextInt();
         
-        if(answer.equals("yes")) {
-        	
-        }else {
-        	garageDatabase.enableGarage(garage);
-        }
+		this.garage = garageDatabase.searchTheClosestGarage(this);
+		
+		if(this.garage != null) {
+			garageDatabase.disableGarage(garage);	
+			garageDatabase.showRoute(this.location, this.garage.getLocation());			 
+			
+			Scanner system = new Scanner(System.in);
+			
+			System.out.println("Driver, do you wanna reserv this garage? yes or no!");
+	        String answer = system.nextLine(); 
+	        
+	        if(answer.equals("yes")) {	            
+	            System.out.println("You've reserved the garage " + this.garage.getName()); 
+	          	reservation = new Reservation(30, garage, garageDatabase);        	       	
+	        }else {
+	        	System.out.println("Ty for your interest");
+	        	garageDatabase.enableGarage(garage);
+	        }
+		}else {
+			System.out.println("I'm sorry, there's no garages available for your right now");
+		}		
 	}
-
+	
+	public void cancelReservation() {
+		this.reservation.cancelReservation();
+	}
+	
 	public void pay() {
 		
 	}
@@ -69,4 +87,10 @@ public class Driver {
 	public void setLocation(String location) {
 		this.location = location;
 	}
+	
+	public int getReservationTime() {
+		return this.reservationTime;
+	}
+	
+	
 }
