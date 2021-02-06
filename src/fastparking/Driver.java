@@ -92,5 +92,7 @@ public class Driver {
 		return this.reservationTime;
 	}
 	
-	
+	public Garage getGarage() {
+		return this.garage;
+	}
 }
