@@ -19,9 +19,10 @@ public class Garage {
 	private boolean hostConfirmation;
 	private boolean driverConfirmation;
 	private boolean driverIsInTheGarage;
+	private BigDecimal width;
+	private BigDecimal length;
 	
-	
-	public Garage(String location, String name) {
+	public Garage(String location, String name, BigDecimal width, BigDecimal length) {
 		this.location = location;
 		this.hostConfirmation = false;
 		this.driverConfirmation = false;
@@ -29,6 +30,8 @@ public class Garage {
 		this.searchesTime = new ArrayList<>();
 		driverIsInTheGarage = false;
 		closeTime = null;
+		this.width = width;
+		this.length = length;
 	}
 	
 	public BigDecimal getPrice() {
@@ -165,6 +168,11 @@ public class Garage {
 		Duration duration = Duration.between(timeCheckIn, timeCheckOut);
 		
 		return BigDecimal.valueOf(duration.toSeconds());
+	}
+	
+	public void setDimensions(BigDecimal width, BigDecimal length) {
+		this.width = width;
+		this.length = length;
 	}
 }
 
