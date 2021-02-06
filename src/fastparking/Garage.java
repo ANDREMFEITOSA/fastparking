@@ -174,5 +174,13 @@ public class Garage {
 		this.width = width;
 		this.length = length;
 	}
+	
+	public BigDecimal getWidth() {
+		return this.width;
+	}
+	
+	public BigDecimal getLength() {
+		return this.length;
+	}
 }
 
