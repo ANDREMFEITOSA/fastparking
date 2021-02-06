@@ -53,8 +53,9 @@ class GarageDatabaseTest {
 		data.enableGarage(garage2);
 		data.enableGarage(garage3);
 		
-		Driver jhow = new Driver(data);
-		jhow.setLocation("-1.3688387,-48.4719525");
+		Car car = new Car("JTDZN3EU0E3298500");
+		Driver driver = new Driver(data, car);
+		driver.setLocation("-1.3688387,-48.4719525");
 		
 		//Garage closestGarage = data.searchTheClosestGarage(jhow);
 		

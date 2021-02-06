@@ -23,12 +23,13 @@ class DriverTest {
 		data.enableGarage(uata);
 		data.enableGarage(momsHome);
 		
-		Driver driver = new Driver(data);
+		Car car = new Car("JTDZN3EU0E3298500");
+		Driver driver = new Driver(data, car);
 		driver.setLocation("-1.3688387,-48.4719525");
 		
-		//driver.reserveGarage();
+		driver.reserveGarage();
 		
-		//Thread.sleep(45 * 1000);
+		Thread.sleep(45 * 1000);
 	}
 	
 	@Test
@@ -43,13 +44,14 @@ class DriverTest {
 		data.enableGarage(uata);
 		data.enableGarage(momsHome);
 		
-		Driver driver = new Driver(data);
+		Car car = new Car("JTDZN3EU0E3298500");
+		Driver driver = new Driver(data, car);
 		driver.setLocation("-1.3688387,-48.4719525");
 		
-		driver.reserveGarage();
+		//driver.reserveGarage();
 		
-		driver.cancelReservation();
+		//driver.cancelReservation();
 		
-		Thread.sleep(40 * 1000);
+		//Thread.sleep(40 * 1000);
 	}
 }

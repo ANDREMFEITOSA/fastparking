@@ -19,8 +19,9 @@ public class Driver {
 	private int reservationTime;
 	private Car car;
 	
-	Driver(GarageDatabase garageDatabase){
+	Driver(GarageDatabase garageDatabase, Car car){
 		this.garageDatabase = garageDatabase;
+		this.car = car;
 	}
 	
 	public void reserveGarage() {
@@ -95,5 +96,9 @@ public class Driver {
 	
 	public Garage getGarage() {
 		return this.garage;
+	}
+	
+	public Car getCar() {
+		return this.car;
 	}
 }

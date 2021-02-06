@@ -28,9 +28,10 @@ class GarageSearchTest {
 		
 		Routes route = new Routes();
 		GarageDatabase data = new GarageDatabase(route);
-		Driver jhow = new Driver(data);
+		Car car = new Car("JTDZN3EU0E3298500");
+		Driver driver = new Driver(data, car);
 
-		jhow.setLocation(casota);
+		driver.setLocation(casota);
 		
 		//Garage closest = test.closestGarage(garages, jhow);
 		

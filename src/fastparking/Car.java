@@ -9,7 +9,7 @@ public class Car {
 	private BigDecimal width;
 	private BigDecimal length;
 	
-	public void setCarDimensions(String vin) {
+	public Car (String vin) {
 		CarDimensionsResearch specifications = new CarDimensionsResearch();
 		specifications.request(vin);
 		
