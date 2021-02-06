@@ -22,7 +22,7 @@ public class Garage {
 	private BigDecimal width;
 	private BigDecimal length;
 	
-	public Garage(String location, String name, BigDecimal width, BigDecimal length) {
+	public Garage(String location, String name, BigDecimal length, BigDecimal width) {
 		this.location = location;
 		this.hostConfirmation = false;
 		this.driverConfirmation = false;
