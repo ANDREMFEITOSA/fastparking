@@ -10,11 +10,13 @@ public class Reservation {
 	Garage garage;
 	GarageDatabase garageDatabase;
 	
-	public Reservation(int seconds, Garage garage, GarageDatabase garageDatabase) {
+	public Reservation(int seconds, Garage garage, GarageDatabase garageDatabase, 
+			Driver driver, PaymentDatabase paymentDatabase) {
 		this.garage = garage;
 		this.garageDatabase = garageDatabase;
 		this.timer = new Timer();
-		this.timer.schedule(new Verification(garage, garageDatabase), seconds*1000);
+		this.timer.schedule(new Verification(garage, garageDatabase, driver, 
+				paymentDatabase), seconds*1000);
 	}
 	
 	public void cancelReservation() {
@@ -26,10 +28,15 @@ public class Reservation {
 	class Verification extends TimerTask {
 		Garage garage;
 		GarageDatabase garageDatabase;
+		Driver driver;
+		PaymentDatabase paymentDatabase;
 		
-		public Verification(Garage garage, GarageDatabase garageDatabase) {
+		public Verification(Garage garage, GarageDatabase garageDatabase, 
+				Driver driver, PaymentDatabase paymentDatabase) {
 			this.garage = garage;
+			this.driver = driver;
 			this.garageDatabase = garageDatabase;
+			this.paymentDatabase = paymentDatabase;
 		}
 		
 		public void run() {
@@ -37,6 +44,8 @@ public class Reservation {
 				System.out.println("Drive is in the garage");
 			}else {
 				this.garageDatabase.enableGarage(this.garage);
+				this.paymentDatabase.addPayment(new Payment(this));
+				
 				System.out.println("Your reservation time run out! "
 						+ "You're gonna be charged: R$ " + 
 						this.garage.getPrice().divide(new BigDecimal("2")));
