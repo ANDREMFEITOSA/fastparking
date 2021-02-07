@@ -9,14 +9,14 @@ import org.junit.jupiter.api.Test;
 
 import sourceCode.Garage;
 import sourceCode.GarageDatabase;
-import sourceCode.Routes;
+import sourceCode.RouteCalculation;
 import sourceCode.*;
 class HostTest {
 
 	@Test
 	void enableGarageTest() {
 		
-		Routes route = new Routes();
+		RouteCalculation route = new RouteCalculation();
 		
 		GarageDatabase garageDatabase = new GarageDatabase(route);
 		
@@ -37,7 +37,7 @@ class HostTest {
 	
 	@Test
 	void disableGarageTest() {
-		Routes route = new Routes();
+		RouteCalculation route = new RouteCalculation();
 		
 		GarageDatabase garageDatabase = new GarageDatabase(route);
 		
@@ -60,7 +60,7 @@ class HostTest {
 	
 	@Test
 	void confirmCheckInTest() {
-		Routes route = new Routes();
+		RouteCalculation route = new RouteCalculation();
 		
 		GarageDatabase garageDatabase = new GarageDatabase(route);
 		

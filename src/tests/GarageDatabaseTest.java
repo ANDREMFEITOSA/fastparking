@@ -10,14 +10,14 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import sourceCode.GarageDatabase;
-import sourceCode.Routes;
+import sourceCode.RouteCalculation;
 import sourceCode.*;
 
 class GarageDatabaseTest {
 
 	@Test
 	void enableGarageTest() {
-		Routes routes = new Routes();
+		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase data = new GarageDatabase(routes);
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage garage = new Garage("-1.4758618,-48.457288", "garage", CONSTANT_LENGTH, CONSTANT_LENGTH);
@@ -29,7 +29,7 @@ class GarageDatabaseTest {
 	
 	@Test
 	void disableGarageTest() {
-		Routes routes = new Routes();
+		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase data = new GarageDatabase(routes);
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage garage1 = new Garage("-1.4758618,-48.457288", "garage1",CONSTANT_LENGTH, CONSTANT_LENGTH);
@@ -51,7 +51,7 @@ class GarageDatabaseTest {
 		
 		
 		
-		Routes routes = new Routes();
+		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase data = new GarageDatabase(routes);
 		data.enableGarage(garage1, data);
 		data.enableGarage(garage2, data);
@@ -71,7 +71,7 @@ class GarageDatabaseTest {
 	
 	@Test
 	void showRouteTest() {
-		Routes routes = new Routes();
+		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase data = new GarageDatabase(routes);
 		data.showRoute("-1.3688387,-48.4719525", "-1.4313795,-48.4625459");
 	}

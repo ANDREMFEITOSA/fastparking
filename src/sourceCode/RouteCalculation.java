@@ -7,7 +7,7 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Routes {
+public class RouteCalculation {
 	private int routeNumber = 1;
 	
 	public void calculatingRoute(String origin, String destination) {

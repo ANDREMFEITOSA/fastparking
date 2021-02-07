@@ -20,6 +20,7 @@ public class Driver {
 	private PaymentDatabase paymentDatabase;
 	private RefundDatabase refundDatabase;
 	private ComplaintDatabase complaintDatabase;
+	private int actualRouteNumber;
 	
 	public Driver(GarageDatabase garageDatabase, Car car, 
 			PaymentDatabase paymentDatabase, RefundDatabase refundDatabase, 
@@ -29,6 +30,7 @@ public class Driver {
 		this.refundDatabase = refundDatabase;
 		this.complaintDatabase = complaintDatabase;
 		this.car = car;
+		this.score = 0;
 	}
 	
 	public void reserveGarage() {
@@ -43,6 +45,8 @@ public class Driver {
 			garageDatabase.disableGarage(garage, this);	
 			garageDatabase.showRoute(this.location, this.garage.getLocation());			 
 			
+			this.actualRouteNumber = garageDatabase.getRoute().getRouteNumber();
+			
 			Scanner system = new Scanner(System.in);
 			
 			System.out.println("Driver, do you wanna reserv this garage? yes or no!");
@@ -54,7 +58,11 @@ public class Driver {
 	          			this, this.paymentDatabase);        	       	
 	        }else {
 	        	System.out.println("Ty for your interest");
-	        	garageDatabase.enableGarage(garage, this);
+	        	RoutesManangement.deleteRoute(this.actualRouteNumber);
+	        	
+	        	if(this.garage.isOpen()) {
+	        		garageDatabase.enableGarage(garage, this);
+	        	}        	
 	        }
 		}else {
 			System.out.println("I'm sorry, there's no garages available for your right now");
@@ -63,6 +71,7 @@ public class Driver {
 	
 	public void cancelReservation() {
 		this.reservation.cancelReservation();
+		RoutesManangement.deleteRoute(this.actualRouteNumber);
 	}
 	
 	public void pay() {
@@ -71,6 +80,7 @@ public class Driver {
 	
 	public void confirmCheckIn() {
 		this.garage.setTimeCheckIn(this);
+		RoutesManangement.deleteRoute(this.actualRouteNumber);
 	}
 	
 	public void ConfirmCheckOut() {
@@ -86,7 +96,7 @@ public class Driver {
 		this.complaintDatabase.add(new Complaint(this, content));
 	}
 	
-	public void evaluation(int evaluation) {
+	public void evaluate(int evaluation) {
 		numberOfEvaluations++;
 		score = (score + evaluation)/numberOfEvaluations;
 	}

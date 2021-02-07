@@ -13,7 +13,7 @@ class ReservationTest {
 	void driverIsOffTheGarageReservationTest() throws InterruptedException {
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage garage = new Garage("location","name", CONSTANT_LENGTH, CONSTANT_LENGTH);
-		Routes routes = new Routes();
+		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
 		Reservation reservation = new Reservation(1, garage, garagaDatabase, 
 				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase(), null, null), 
@@ -27,7 +27,7 @@ class ReservationTest {
 	void cancelReservation() throws InterruptedException {
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage garage = new Garage("location","name", CONSTANT_LENGTH, CONSTANT_LENGTH);
-		Routes routes = new Routes();
+		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
 		Reservation reservation = new Reservation(3, garage, garagaDatabase, 
 				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase(), null, null), 

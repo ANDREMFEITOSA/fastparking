@@ -12,7 +12,7 @@ class PaymentTest {
 	@Test
 	void hostPaymentAmountTest() {
 		
-		Routes routes = new Routes();
+		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase garageDatabase = new GarageDatabase(routes);
 		Garage garage = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
 		PaymentDatabase paymentDatabase = new PaymentDatabase();

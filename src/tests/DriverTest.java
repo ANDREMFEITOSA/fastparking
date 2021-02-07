@@ -21,7 +21,7 @@ class DriverTest {
 		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome", length, width);
 		momsHome.setCloseTime(30);
 		
-		Routes route = new Routes();
+		RouteCalculation route = new RouteCalculation();
 		
 		GarageDatabase data = new GarageDatabase(route);
 		data.enableGarage(uata, data);

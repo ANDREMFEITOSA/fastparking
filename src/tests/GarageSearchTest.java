@@ -28,7 +28,7 @@ class GarageSearchTest {
 		
 		String casota = "-1.4078921,-48.4658382";
 		
-		Routes route = new Routes();
+		RouteCalculation route = new RouteCalculation();
 		GarageDatabase data = new GarageDatabase(route);
 		Car car = new Car("JTDZN3EU0E3298500");
 		PaymentDatabase paymentDatabase = new PaymentDatabase();
@@ -43,9 +43,9 @@ class GarageSearchTest {
 	
 	@Test
 	void showRouteTest() {
-		Routes route = new Routes();
+		RouteCalculation route = new RouteCalculation();
 		route.calculatingRoute("-1.3688387,-48.4719525", "-1.4313741,-48.4647346");
 		GarageSearch test = new GarageSearch();
-		test.showRoute(1);
+		RoutesManangement.showRoute(1);
 	}
 }

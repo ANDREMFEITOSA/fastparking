@@ -8,9 +8,9 @@ import java.util.List;
 public class GarageDatabase {
 	GarageSearch search;
 	private List<Garage> availableGarages;
-	private Routes route;
+	private RouteCalculation route;
 
-	public GarageDatabase(Routes routes) {
+	public GarageDatabase(RouteCalculation routes) {
 		this.search = new GarageSearch();
 		this.availableGarages = new ArrayList<>();
 		this.route = routes;
@@ -47,7 +47,7 @@ public class GarageDatabase {
 	public void showRoute(String origin, String destination) {
 		int routeNumber = this.route.getRouteNumber();
 		this.route.calculatingRoute(origin, destination);
-		this.search.showRoute(routeNumber);
+		RoutesManangement.showRoute(routeNumber);
 	}
 
 	public List<Garage> possibleGarages(Driver driver) {
@@ -70,5 +70,9 @@ public class GarageDatabase {
 		}		
 		
 		return possibleGarages;
+	}
+	
+	public RouteCalculation getRoute() {
+		return this.route;
 	}
 }
