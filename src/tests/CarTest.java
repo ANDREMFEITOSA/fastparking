@@ -1,4 +1,4 @@
-package fastparking;
+package tests;
 
 public class CarTest {
 

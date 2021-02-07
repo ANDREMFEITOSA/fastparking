@@ -1,8 +1,8 @@
-package fastparking;
+package sourceCode;
 
 import java.math.BigDecimal;
 
-import fastparking.Reservation.Verification;
+import sourceCode.Reservation.Verification;
 
 public class Payment {
 	

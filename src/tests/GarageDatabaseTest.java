@@ -1,4 +1,4 @@
-package fastparking;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -8,6 +8,10 @@ import java.util.List;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import sourceCode.GarageDatabase;
+import sourceCode.Routes;
+import sourceCode.*;
 
 class GarageDatabaseTest {
 

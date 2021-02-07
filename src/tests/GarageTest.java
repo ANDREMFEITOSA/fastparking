@@ -1,4 +1,4 @@
-package fastparking;
+package tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
+import sourceCode.*;
 class GarageTest {
 
 	@Test

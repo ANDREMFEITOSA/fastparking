@@ -1,4 +1,4 @@
-package fastparking;
+package tests;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -7,6 +7,10 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import sourceCode.Garage;
+import sourceCode.GarageDatabase;
+import sourceCode.Routes;
+import sourceCode.*;
 class HostTest {
 
 	@Test

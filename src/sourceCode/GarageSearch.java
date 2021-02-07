@@ -1,4 +1,4 @@
-package fastparking;
+package sourceCode;
 
 import java.awt.Desktop;
 import java.io.BufferedReader;
@@ -10,9 +10,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class GarageSearch {
 	private static HttpURLConnection connection;

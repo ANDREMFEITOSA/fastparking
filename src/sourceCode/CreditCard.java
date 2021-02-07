@@ -1,4 +1,4 @@
-package fastparking;
+package sourceCode;
 
 public class CreditCard {
 	private int number;

@@ -1,4 +1,4 @@
-package fastparking;
+package sourceCode;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -20,7 +20,7 @@ public class Driver {
 	private Car car;
 	private PaymentDatabase paymentDatabase;
 	
-	Driver(GarageDatabase garageDatabase, Car car, PaymentDatabase paymentDatabase){
+	public Driver(GarageDatabase garageDatabase, Car car, PaymentDatabase paymentDatabase){
 		this.paymentDatabase = paymentDatabase;
 		this.garageDatabase = garageDatabase;
 		this.car = car;
