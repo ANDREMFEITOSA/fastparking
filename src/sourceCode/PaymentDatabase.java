@@ -19,4 +19,8 @@ public class PaymentDatabase {
 	public void removePayment(Payment payment) {
 		this.paymentList.remove(payment);
 	}
+	
+	public Payment getPayment(int index) {
+		return paymentList.get(index);
+	}
 }

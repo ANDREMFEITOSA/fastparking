@@ -54,4 +54,8 @@ public class Host {
 	public void evaluateDriver(GarageDatabase garageDatabase, Driver driver) {
 		
 	}
+	
+	public String getBankAccount() {
+		return this.account;
+	}
 }

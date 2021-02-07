@@ -24,8 +24,8 @@ class DriverTest {
 		Routes route = new Routes();
 		
 		GarageDatabase data = new GarageDatabase(route);
-		data.enableGarage(uata);
-		data.enableGarage(momsHome);
+		data.enableGarage(uata, data);
+		data.enableGarage(momsHome, data);
 		
 		Car car = new Car("JTDZN3EU0E3298500");
 		PaymentDatabase paymentDatabase = new PaymentDatabase();

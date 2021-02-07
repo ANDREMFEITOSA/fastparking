@@ -29,4 +29,20 @@ public class Payment {
 					.multiply(BigDecimal.ONE.subtract(paymentCalculation.getServiceFee()));
 		}
 	}
+	
+	public BigDecimal getValueHost() {
+		return this.valueHost;
+	}
+	
+	public BigDecimal getValueDriver() {
+		return this.valueDriver;
+	}
+	
+	public String getDriverCreditCard() {
+		return this.driver.getCreditCard();
+	}
+	
+	public String getHostBankAccount() {
+		return this.host.getBankAccount();
+	}
 }

@@ -8,7 +8,7 @@ public class Driver {
 	private String cpf;
 	private String carDocument;
 	private String location;
-	private CreditCard card;
+	private String card;
 	private float score;
 	private int numberOfEvaluations;
 	private Garage garage;
@@ -102,5 +102,9 @@ public class Driver {
 	
 	public Car getCar() {
 		return this.car;
+	}
+	
+	public String getCreditCard() {
+		return this.card;
 	}
 }

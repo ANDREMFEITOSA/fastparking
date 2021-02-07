@@ -22,7 +22,7 @@ class GarageDatabaseTest {
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage garage = new Garage("-1.4758618,-48.457288", "garage", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		
-		data.enableGarage(garage);
+		data.enableGarage(garage, data);
 		
 		Assertions.assertEquals(1, data.getNumberOfAvailableGarages());
 	}
@@ -35,9 +35,9 @@ class GarageDatabaseTest {
 		Garage garage1 = new Garage("-1.4758618,-48.457288", "garage1",CONSTANT_LENGTH, CONSTANT_LENGTH);
 		Garage garage2 = new Garage("-1.4758618,-48.457288", "garage2", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		
-		data.enableGarage(garage1);
-		data.enableGarage(garage2);
-		data.disableGarage(garage1);
+		data.enableGarage(garage1, data);
+		data.enableGarage(garage2, data);
+		data.disableGarage(garage1, data);
 		
 		Assertions.assertEquals(1, data.getNumberOfAvailableGarages());
 	}
@@ -53,9 +53,9 @@ class GarageDatabaseTest {
 		
 		Routes routes = new Routes();
 		GarageDatabase data = new GarageDatabase(routes);
-		data.enableGarage(garage1);
-		data.enableGarage(garage2);
-		data.enableGarage(garage3);
+		data.enableGarage(garage1, data);
+		data.enableGarage(garage2, data);
+		data.enableGarage(garage3, data);
 		
 		Car car = new Car("JTDZN3EU0E3298500");
 		PaymentDatabase PaymentDatabase = new PaymentDatabase();

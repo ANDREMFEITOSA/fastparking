@@ -6,9 +6,6 @@ import java.text.NumberFormat;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import sourceCode.Garage;
-import sourceCode.GarageDatabase;
-import sourceCode.Routes;
 import sourceCode.*;
 class PaymentTest {
 
@@ -20,7 +17,7 @@ class PaymentTest {
 		Garage garage = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
 		PaymentDatabase paymentDatabase = new PaymentDatabase();
 		Driver driver = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase);
-		Host host = new Host("João", "000.000.000-00", "xxx", "000000", garage, 10);
+		Host host = new Host("João", "000.000.000-00", "xxx", "", garage, 10);
 		
 		BigDecimal serviceFee = BigDecimal.valueOf(0.05);
 		

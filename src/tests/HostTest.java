@@ -24,9 +24,9 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "000000", garage_joao, 10);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "000000", garage_paulo, 10);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "000000", garage_paulo, 10);
+		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, 10);
+		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, 10);
+		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, 10);
 		
 		host_joao.enableGarage(garageDatabase);
 		host_paulo.enableGarage(garageDatabase);
@@ -45,9 +45,9 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "000000", garage_joao, 10);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "000000", garage_paulo, 10);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "000000", garage_paulo, 10);
+		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, 10);
+		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy","", garage_paulo, 10);
+		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, 10);
 		
 		host_joao.enableGarage(garageDatabase);
 		host_paulo.enableGarage(garageDatabase);
@@ -68,9 +68,9 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "000000", garage_joao, 10);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "000000", garage_paulo, 10);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "000000", garage_paulo, 10);
+		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, 10);
+		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, 10);
+		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, 10);
 		
 		host_joao.enableGarage(garageDatabase);
 		host_paulo.enableGarage(garageDatabase);
