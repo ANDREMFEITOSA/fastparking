@@ -24,13 +24,13 @@ public class Host {
 
 	public void enableGarage(GarageDatabase garageDatabase) {
 		
-		garageDatabase.enableGarage(this.garage);
+		garageDatabase.enableGarage(this.garage, this);
 		
 	}
 	
 	public void disableGarage(GarageDatabase garageDatabase) {
 		
-		garageDatabase.disableGarage(this.garage);
+		garageDatabase.disableGarage(this.garage, this);
 		
 	}
 	

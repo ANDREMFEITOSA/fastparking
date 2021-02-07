@@ -16,12 +16,20 @@ public class GarageDatabase {
 		this.route = routes;
 	}
 
-	public void enableGarage(Garage garage) {
+	public void enableGarage(Garage garage, Object obj) {
 		this.availableGarages.add(garage);
+		
+		if(obj instanceof Host) {
+			garage.open();
+		}
 	}
 
-	public void disableGarage(Garage garage) {
+	public void disableGarage(Garage garage, Object obj) {
 		this.availableGarages.remove(garage);
+		
+		if(obj instanceof Host) {
+			garage.close();
+		}
 	}
 
 	public Garage searchTheClosestGarage(Driver driver) {

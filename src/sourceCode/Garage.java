@@ -23,6 +23,7 @@ public class Garage {
 	private BigDecimal length;
 	private Host host;
 	private Driver driver;
+	private boolean isOpen;
 	
 	public Garage(String location, String name, BigDecimal length, BigDecimal width) {
 		this.location = location;
@@ -197,6 +198,18 @@ public class Garage {
 	
 	public void setHost(Host host) {
 		this.host = host;
+	}
+	
+	public void open() {
+		this.isOpen = true;
+	}
+	
+	public void close() {
+		this.isOpen = false;
+	}
+	
+	public boolean isOpen() {
+		return this.isOpen;
 	}
 }
 

@@ -14,7 +14,6 @@ public class Driver {
 	private Garage garage;
 	private Manager manager;	
 	private GarageDatabase garageDatabase;
-	private Routes route;
 	private Reservation reservation;
 	private int reservationTime;
 	private Car car;
@@ -35,7 +34,7 @@ public class Driver {
 		this.garage = garageDatabase.searchTheClosestGarage(this);
 		
 		if(this.garage != null) {
-			garageDatabase.disableGarage(garage);	
+			garageDatabase.disableGarage(garage, this);	
 			garageDatabase.showRoute(this.location, this.garage.getLocation());			 
 			
 			Scanner system = new Scanner(System.in);
@@ -49,7 +48,7 @@ public class Driver {
 	          			this, this.paymentDatabase);        	       	
 	        }else {
 	        	System.out.println("Ty for your interest");
-	        	garageDatabase.enableGarage(garage);
+	        	garageDatabase.enableGarage(garage, this);
 	        }
 		}else {
 			System.out.println("I'm sorry, there's no garages available for your right now");
