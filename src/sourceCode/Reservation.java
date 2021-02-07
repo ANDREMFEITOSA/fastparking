@@ -50,13 +50,12 @@ public class Reservation {
 				
 				System.out.println("route number: " + this.driver.getActualRouteNumber());
 				
-				RoutesManangement.deleteRoute(this.driver.getActualRouteNumber());
-				
 				System.out.println("Your reservation time run out! " + "You're gonna be charged: R$ "
 						+ this.garage.getPrice().divide(new BigDecimal("2")));				
 				
 			}
-
+			
+			RoutesManangement.deleteRoute(this.driver.getActualRouteNumber());
 		}
 
 		public Driver getDriver() {
