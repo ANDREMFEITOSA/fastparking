@@ -29,7 +29,8 @@ class GarageSearchTest {
 		Routes route = new Routes();
 		GarageDatabase data = new GarageDatabase(route);
 		Car car = new Car("JTDZN3EU0E3298500");
-		Driver driver = new Driver(data, car);
+		PaymentDatabase paymentDatabase = new PaymentDatabase();
+		Driver driver = new Driver(data, car, paymentDatabase);
 
 		driver.setLocation(casota);
 		

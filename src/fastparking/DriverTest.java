@@ -14,8 +14,11 @@ class DriverTest {
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage uata = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		uata.setCloseTime(30);
-		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome", CONSTANT_LENGTH, CONSTANT_LENGTH);
-		momsHome.setCloseTime(10);
+		
+		BigDecimal length = new BigDecimal("4.5");
+		BigDecimal width = new BigDecimal("3");
+		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome", length, width);
+		momsHome.setCloseTime(30);
 		
 		Routes route = new Routes();
 		
@@ -24,17 +27,18 @@ class DriverTest {
 		data.enableGarage(momsHome);
 		
 		Car car = new Car("JTDZN3EU0E3298500");
-		Driver driver = new Driver(data, car);
+		PaymentDatabase paymentDatabase = new PaymentDatabase();
+		Driver driver = new Driver(data, car, paymentDatabase);		
 		driver.setLocation("-1.3688387,-48.4719525");
 		
 		driver.reserveGarage();
 		
-		Thread.sleep(45 * 1000);
+		Thread.sleep(35 * 1000);
 	}
 	
 	@Test
 	void cancellingReservation() throws InterruptedException{
-		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
+		/*BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage uata = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		uata.setCloseTime(30);
 		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome", CONSTANT_LENGTH, CONSTANT_LENGTH);
@@ -52,6 +56,6 @@ class DriverTest {
 		
 		//driver.cancelReservation();
 		
-		//Thread.sleep(40 * 1000);
+		//Thread.sleep(40 * 1000);*/
 	}
 }
