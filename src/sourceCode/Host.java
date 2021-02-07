@@ -19,7 +19,6 @@ public class Host {
 		this.proofOfAddress = proofOfAddress;
 		this.account = account;
 		this.garage = garage;
-		this.score = score;
 		this.complaintDatabase = complaintDatabase;
 		
 		this.garage.setHost(this);

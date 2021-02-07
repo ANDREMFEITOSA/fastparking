@@ -45,7 +45,7 @@ public class Driver {
 			garageDatabase.disableGarage(garage, this);	
 			garageDatabase.showRoute(this.location, this.garage.getLocation());			 
 			
-			this.actualRouteNumber = garageDatabase.getRoute().getRouteNumber();
+			this.actualRouteNumber = garageDatabase.getRoute().getRouteNumber() - 1;
 			
 			Scanner system = new Scanner(System.in);
 			

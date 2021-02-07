@@ -34,7 +34,7 @@ class DriverTest {
 		
 		driver.reserveGarage();
 		
-		Thread.sleep(35 * 1000);
+		Thread.sleep(31 * 1000);
 	}
 	
 	@Test
