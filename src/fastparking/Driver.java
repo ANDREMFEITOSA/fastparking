@@ -18,8 +18,10 @@ public class Driver {
 	private Reservation reservation;
 	private int reservationTime;
 	private Car car;
+	private PaymentDatabase paymentDatabase;
 	
-	Driver(GarageDatabase garageDatabase, Car car){
+	Driver(GarageDatabase garageDatabase, Car car, PaymentDatabase paymentDatabase){
+		this.paymentDatabase = paymentDatabase;
 		this.garageDatabase = garageDatabase;
 		this.car = car;
 	}
@@ -43,7 +45,8 @@ public class Driver {
 	        
 	        if(answer.equals("yes")) {	            
 	            System.out.println("You've reserved the garage " + this.garage.getName()); 
-	          	reservation = new Reservation(30, garage, garageDatabase);        	       	
+	          	reservation = new Reservation(30, garage, garageDatabase, 
+	          			this, this.paymentDatabase);        	       	
 	        }else {
 	        	System.out.println("Ty for your interest");
 	        	garageDatabase.enableGarage(garage);
@@ -58,7 +61,7 @@ public class Driver {
 	}
 	
 	public void pay() {
-		
+		paymentDatabase.addPayment(new Payment(this));
 	}
 	
 	public void confirmCheckIn() {
