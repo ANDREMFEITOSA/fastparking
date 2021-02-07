@@ -29,7 +29,7 @@ class DriverTest {
 		
 		Car car = new Car("JTDZN3EU0E3298500");
 		PaymentDatabase paymentDatabase = new PaymentDatabase();
-		Driver driver = new Driver(data, car, paymentDatabase);		
+		Driver driver = new Driver(data, car, paymentDatabase, null);		
 		driver.setLocation("-1.3688387,-48.4719525");
 		
 		driver.reserveGarage();
