@@ -124,4 +124,8 @@ public class Driver {
 	public String getCreditCard() {
 		return this.card;
 	}
+
+	public int getActualRouteNumber() {
+		return this.actualRouteNumber;
+	}
 }
