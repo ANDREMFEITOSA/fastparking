@@ -49,9 +49,12 @@ public class Reservation {
 				System.out.println("Your reservation time run out! "
 						+ "You're gonna be charged: R$ " + 
 						this.garage.getPrice().divide(new BigDecimal("2")));
-			}
+			}	
 			
-			timer.cancel(); 
+		}
+		
+		public Driver getDriver() {
+			return this.driver;
 		}
 		
 	}

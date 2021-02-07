@@ -29,4 +29,7 @@ public class PaymentCalculation {
 		
 	}
 	
+	public BigDecimal getServiceFee() {
+		return this.serviceFee;
+	}
 }

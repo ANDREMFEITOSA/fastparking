@@ -23,9 +23,7 @@ class CarDimensionsResearchTest {
 		CarDimensionsResearch specResearch = new CarDimensionsResearch();
 		
 		specResearch.request(vin);
-		BigDecimal width = specResearch.getWidth();
-		
-		
+		BigDecimal width = specResearch.getWidth();	
 	}
 
 }

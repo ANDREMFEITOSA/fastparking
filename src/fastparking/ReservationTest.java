@@ -15,8 +15,9 @@ class ReservationTest {
 		Garage garage = new Garage("location","name", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		Routes routes = new Routes();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
-		new Reservation(1, garage, garagaDatabase, new Driver(garagaDatabase, 
-				new Car(""), new PaymentDatabase()), new PaymentDatabase());
+		Reservation reservation = new Reservation(1, garage, garagaDatabase, 
+				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase()), 
+					new PaymentDatabase());
 		int seconds = 2;
 		Thread.sleep(seconds * 1000); 	
 		Assertions.assertEquals(1, garagaDatabase.getNumberOfAvailableGarages());
@@ -29,7 +30,7 @@ class ReservationTest {
 		Routes routes = new Routes();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
 		Reservation reservation = new Reservation(3, garage, garagaDatabase, 
-				new Driver(garagaDatabase, new Car(""), new PaymentDatabase()), 
+				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase()), 
 					new PaymentDatabase());
 		reservation.cancelReservation();
 		int seconds = 5;
