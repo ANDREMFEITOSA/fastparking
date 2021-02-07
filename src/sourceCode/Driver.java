@@ -18,10 +18,16 @@ public class Driver {
 	private int reservationTime;
 	private Car car;
 	private PaymentDatabase paymentDatabase;
+	private RefundDatabase refundDatabase;
+	private ComplaintDatabase complaintDatabase;
 	
-	public Driver(GarageDatabase garageDatabase, Car car, PaymentDatabase paymentDatabase){
+	public Driver(GarageDatabase garageDatabase, Car car, 
+			PaymentDatabase paymentDatabase, RefundDatabase refundDatabase, 
+				ComplaintDatabase complaintDatabase){
 		this.paymentDatabase = paymentDatabase;
 		this.garageDatabase = garageDatabase;
+		this.refundDatabase = refundDatabase;
+		this.complaintDatabase = complaintDatabase;
 		this.car = car;
 	}
 	
@@ -71,12 +77,13 @@ public class Driver {
 		this.garage.setTimeCheckOut(this);
 	}
 	
-	public void askForRefund(String description) {
-		this.manager.refundSolicitation(description);
+	public void newRefundSolicitation(String reason, int paymentIndex) {
+		this.refundDatabase.add(new RefundSolicitation(this, 
+				this.paymentDatabase.getPayment(paymentIndex), reason));
 	}
 	
-	public void subimitComplaint(String complaint) {
-		this.manager.newComplaint(complaint);
+	public void subimitComplaint(String content) {
+		this.complaintDatabase.add(new Complaint(this, content));
 	}
 	
 	public void evaluation(int evaluation) {

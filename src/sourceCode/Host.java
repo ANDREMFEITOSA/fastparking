@@ -10,15 +10,18 @@ public class Host {
 	private String account;
 	private Garage garage;
 	private int score;
+	private ComplaintDatabase complaintDatabase;
 	
 	public Host(String name, String cpf, String proofOfAddress, String account,
-			Garage garage, int score) {
+			Garage garage, ComplaintDatabase complaintDatabase) {
 		this.name = name;
 		this.cpf = cpf;
 		this.proofOfAddress = proofOfAddress;
 		this.account = account;
 		this.garage = garage;
 		this.score = score;
+		this.complaintDatabase = complaintDatabase;
+		
 		this.garage.setHost(this);
 	}
 
@@ -47,8 +50,8 @@ public class Host {
 		return this.garage;
 	}
 	
-	public void submitComplaint(GarageDatabase garageDatabase, Driver driver) {
-		
+	public void subimitComplaint(String content) {
+		this.complaintDatabase.add(new Complaint(this, content));
 	}
 	
 	public void evaluateDriver(GarageDatabase garageDatabase, Driver driver) {

@@ -3,9 +3,6 @@ package sourceCode;
 import java.math.BigDecimal;
 
 public class Car {
-	private String licensePlate;
-	private String document;
-	private String model;
 	private BigDecimal width;
 	private BigDecimal length;
 	
