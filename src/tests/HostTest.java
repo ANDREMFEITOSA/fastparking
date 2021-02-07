@@ -24,9 +24,9 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, 10);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, 10);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, 10);
+		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, null);
+		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, null);
+		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, null);
 		
 		host_joao.enableGarage(garageDatabase);
 		host_paulo.enableGarage(garageDatabase);
@@ -45,9 +45,9 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, 10);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy","", garage_paulo, 10);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, 10);
+		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, null);
+		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy","", garage_paulo, null);
+		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, null);
 		
 		host_joao.enableGarage(garageDatabase);
 		host_paulo.enableGarage(garageDatabase);
@@ -68,19 +68,19 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, 10);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, 10);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, 10);
+		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, null);
+		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, null);
+		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, null);
 		
 		host_joao.enableGarage(garageDatabase);
 		host_paulo.enableGarage(garageDatabase);
 		host_andre.enableGarage(garageDatabase);
 		
 		PaymentDatabase paymentDatabase = new PaymentDatabase();
-		Driver driver_pedro = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase, null);
+		Driver driver_pedro = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase, null, null);
 		host_joao.getGarage().setTimeCheckIn(driver_pedro);
 		
-		Driver driver_tiago = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase, null);
+		Driver driver_tiago = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase, null, null);
 		host_paulo.getGarage().setTimeCheckIn(driver_tiago);
 		
 		host_joao.confirmCheckIn(garageDatabase);

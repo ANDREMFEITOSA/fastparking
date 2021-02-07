@@ -32,7 +32,7 @@ class GarageSearchTest {
 		GarageDatabase data = new GarageDatabase(route);
 		Car car = new Car("JTDZN3EU0E3298500");
 		PaymentDatabase paymentDatabase = new PaymentDatabase();
-		Driver driver = new Driver(data, car, paymentDatabase, null);
+		Driver driver = new Driver(data, car, paymentDatabase, null, null);
 
 		driver.setLocation(casota);
 		

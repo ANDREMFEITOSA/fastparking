@@ -16,7 +16,7 @@ class ReservationTest {
 		Routes routes = new Routes();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
 		Reservation reservation = new Reservation(1, garage, garagaDatabase, 
-				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase(), null), 
+				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase(), null, null), 
 					new PaymentDatabase());
 		int seconds = 2;
 		Thread.sleep(seconds * 1000); 	
@@ -30,7 +30,7 @@ class ReservationTest {
 		Routes routes = new Routes();
 		GarageDatabase garagaDatabase = new GarageDatabase(routes);
 		Reservation reservation = new Reservation(3, garage, garagaDatabase, 
-				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase(), null), 
+				new Driver(garagaDatabase, new Car("JTDZN3EU0E3298500"), new PaymentDatabase(), null, null), 
 					new PaymentDatabase());
 		reservation.cancelReservation();
 		int seconds = 5;

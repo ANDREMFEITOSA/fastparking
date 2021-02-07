@@ -59,7 +59,7 @@ class GarageDatabaseTest {
 		
 		Car car = new Car("JTDZN3EU0E3298500");
 		PaymentDatabase PaymentDatabase = new PaymentDatabase();
-		Driver driver = new Driver(data, car, PaymentDatabase, null);
+		Driver driver = new Driver(data, car, PaymentDatabase, null, null);
 		driver.setLocation("-1.3688387,-48.4719525");
 		
 		//Garage closestGarage = data.searchTheClosestGarage(jhow);
