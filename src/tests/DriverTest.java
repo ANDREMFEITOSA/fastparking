@@ -24,14 +24,16 @@ class DriverTest {
 		momsHome.setCloseTime(30);
 				
 		database.garageDatabase.enableGarage(uata, this);
-				
+		database.garageDatabase.enableGarage(momsHome, this);
+		
 		Car car = new Car("JTDZN3EU0E3298500");
 		
-		Driver driver = new Driver(car, database);		
+		Driver driver = new Driver(car, database, "jhow");
+				
 		driver.setLocation("-1.3688387,-48.4719525");
 		
 		driver.reserveGarage();
-		
+				
 		Thread.sleep(31 * 1000);
 	}
 	
