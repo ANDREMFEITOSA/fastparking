@@ -128,4 +128,8 @@ public class Driver {
 	public int getActualRouteNumber() {
 		return this.actualRouteNumber;
 	}
+
+	public void setCar(Car car) {
+		this.car = car;
+	}
 }
