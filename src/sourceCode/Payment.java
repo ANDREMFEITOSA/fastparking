@@ -18,7 +18,7 @@ public class Payment {
 			this.valueHost = paymentCalculation.hostPaymentAmount();
 			this.host = ((Driver) obj).getGarage().getHost();
 			this.driver = ((Driver) obj);
-		}else {
+		}else if(obj instanceof Verification){
 			PaymentCalculation paymentCalculation = new PaymentCalculation(((Verification) obj).getDriver().getGarage());
 			
 			this.driver = ((Verification) obj).getDriver();
@@ -27,6 +27,11 @@ public class Payment {
 					.getPrice().divide(new BigDecimal("2"));
 			this.valueHost = this.valueDriver
 					.multiply(BigDecimal.ONE.subtract(paymentCalculation.getServiceFee()));
+		}else if(obj instanceof Payment) {
+			this.driver = ((Payment) obj).getDriver();
+			this.host = null;
+			this.valueDriver = ((Payment) obj).getValueDriver();
+			this.valueHost = null;
 		}
 	}
 	
@@ -44,5 +49,9 @@ public class Payment {
 	
 	public String getHostBankAccount() {
 		return this.host.getBankAccount();
+	}
+	
+	public Driver getDriver() {
+		return this.driver;
 	}
 }

@@ -11,6 +11,14 @@ public class RefundSolicitation {
 		this.reason = reason;
 	}
 	
+	public Driver getDriver() {
+		return this.driver;
+	}
+	
+	public Payment getPayment() {
+		return this.payment;
+	}
+	
 	public void showReason() {
 		System.out.println(reason);
 	}
