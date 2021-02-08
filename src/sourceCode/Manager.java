@@ -3,39 +3,26 @@ package sourceCode;
 import java.util.List;
 
 public class Manager {
-	private ComplaintsDatabase complaintDatabase;
-	private PaymentDatabase paymentDatabase;
-	private RefundDatabase refundDatabase;
-
-	public Manager(ComplaintsDatabase complaintDatabase, PaymentDatabase paymentDatabase,
-			RefundDatabase refundDatabase) {
-		this.complaintDatabase = complaintDatabase;
-		this.paymentDatabase = paymentDatabase;
-		this.refundDatabase = refundDatabase;
+	private Database database;
+	
+	public Manager(Database database) {
+		this.database = database;
 	}
 
 	public void seeNextComplaint() {
-		this.complaintDatabase.seeNextComplaintContent();
+		this.database.complaintsDatabase.seeNextComplaintContent();
 	}
 
-	public void refundSolicitation(String description) {
-
+	public void authorizeRefund(Payment payment) {
+		this.database.paymentDatabase.addPayment(new Payment(payment));
 	}
 
-	public void cadastrarHost() {
-
+	public void unsubscribeDriver(Driver driver) {
+		this.database.driversDatabase.remove(driver);
 	}
-
-	public void cadastrarUser() {
-
-	}
-
-	public void desvincularHost() {
-
-	}
-
-	public void desvincularUser() {
-
+	
+	public void unsubscribeHost(Host host) {
+		this.database.hostsDatabase.remove(host);
 	}
 
 }

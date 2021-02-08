@@ -6,12 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GarageDatabase {
-	GarageSearch search;
 	private List<Garage> availableGarages;
 	private RouteCalculation route;
 
 	public GarageDatabase(RouteCalculation routes) {
-		this.search = new GarageSearch();
 		this.availableGarages = new ArrayList<>();
 		this.route = routes;
 	}
@@ -33,6 +31,8 @@ public class GarageDatabase {
 	}
 
 	public Garage searchTheClosestGarage(Driver driver) {
+		GarageSearch search = new GarageSearch();
+		
 		if (this.possibleGarages(driver).size() > 0) {
 			return search.closestGarage(this.possibleGarages(driver), driver);
 		} else {

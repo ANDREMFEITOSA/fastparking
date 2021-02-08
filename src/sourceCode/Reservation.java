@@ -43,7 +43,8 @@ public class Reservation {
 
 				this.database.paymentDatabase.addPayment(new Payment(this));
 				
-				System.out.println("Your reservation time run out! " + "You're gonna be charged: R$ "
+				System.out.println(this.driver.getName() + ", Your reservation time run out! " 
+						+ "You're gonna be charged: R$ "
 						+ this.garage.getPrice().divide(new BigDecimal("2")));				
 				
 			}

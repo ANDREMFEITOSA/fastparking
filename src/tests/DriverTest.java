@@ -16,12 +16,12 @@ class DriverTest {
 		
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage uata = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE", CONSTANT_LENGTH, CONSTANT_LENGTH);
-		uata.setCloseTime(30);
+		uata.setCloseTime(60);
 		
 		BigDecimal length = new BigDecimal("4.5");
 		BigDecimal width = new BigDecimal("3");
-		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome", length, width);
-		momsHome.setCloseTime(30);
+		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome", CONSTANT_LENGTH, CONSTANT_LENGTH);
+		momsHome.setCloseTime(60);
 				
 		database.garageDatabase.enableGarage(uata, this);
 		database.garageDatabase.enableGarage(momsHome, this);
@@ -29,11 +29,11 @@ class DriverTest {
 		Car car = new Car("JTDZN3EU0E3298500");
 		
 		Driver driver = new Driver(car, database, "jhow");
-				
+						
 		driver.setLocation("-1.3688387,-48.4719525");
-		
-		driver.reserveGarage();
 				
+		driver.reserveGarage();
+		
 		Thread.sleep(31 * 1000);
 	}
 	

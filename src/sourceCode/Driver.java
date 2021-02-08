@@ -47,7 +47,7 @@ public class Driver {
 				
 				Scanner system = new Scanner(System.in);
 				
-				System.out.println("Driver, do you wanna reserv this garage? yes or no!");
+				System.out.println(this.name + ", do you wanna reserv this garage? yes or no!");
 		        String answer = system.nextLine(); 
 		        
 		        if(answer.equals("yes")) {	            
@@ -230,5 +230,9 @@ public class Driver {
 			throw new SubscriptionNotFoundException(this.name + 
 					" You're not subscribed in our platform.");
 		}
+	}
+
+	public String getName() {
+		return this.name;
 	}
 }

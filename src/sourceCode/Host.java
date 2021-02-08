@@ -49,7 +49,7 @@ public class Host {
 		return this.garage;
 	}
 	
-	public void subimitComplaint(String content) {
+	public void subimitComplaint(String content) {	
 		this.complaintDatabase.add(new Complaint(this, content));
 	}
 	
