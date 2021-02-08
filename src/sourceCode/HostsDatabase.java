@@ -3,7 +3,6 @@ package sourceCode;
 import java.util.ArrayList;
 import java.util.List;
 
-<<<<<<< HEAD
 public class HostsDatabase {
 	List<Host> hostsList = new ArrayList<>();
 	
@@ -22,11 +21,4 @@ public class HostsDatabase {
 		
 		return false;
 	}
-=======
-	public void remove(Host host) {
-		// TODO Auto-generated method stub
-		
-	}
-
->>>>>>> ccff4a0c19c2367a60e6b02433efb1ec40cd13a5
 }

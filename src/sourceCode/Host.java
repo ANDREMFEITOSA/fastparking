@@ -51,7 +51,6 @@ public class Host {
 		return this.garage;
 	}
 	
-<<<<<<< HEAD
 	public void subimitComplaint(String content) {
 		try {
 			this.isSubscribed();
@@ -59,13 +58,8 @@ public class Host {
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
-		
-=======
-	public void subimitComplaint(String content) {	
-		this.complaintDatabase.add(new Complaint(this, content));
->>>>>>> ccff4a0c19c2367a60e6b02433efb1ec40cd13a5
 	}
-	
+		
 	public void evaluateDriver(GarageDatabase garageDatabase, Driver driver) {
 		
 	}
