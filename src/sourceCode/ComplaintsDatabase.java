@@ -3,7 +3,7 @@ package sourceCode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ComplaintDatabase {
+public class ComplaintsDatabase {
 	List<Complaint> complaints = new ArrayList<>();
 	
 	public void add(Complaint complaint){

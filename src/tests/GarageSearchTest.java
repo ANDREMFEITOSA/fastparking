@@ -28,11 +28,9 @@ class GarageSearchTest {
 		
 		String casota = "-1.4078921,-48.4658382";
 		
-		RouteCalculation route = new RouteCalculation();
-		GarageDatabase data = new GarageDatabase(route);
 		Car car = new Car("JTDZN3EU0E3298500");
-		PaymentDatabase paymentDatabase = new PaymentDatabase();
-		Driver driver = new Driver(data, car, paymentDatabase, null, null);
+		
+		Driver driver = new Driver(car, null);
 
 		driver.setLocation(casota);
 		

@@ -6,36 +6,31 @@ import java.util.TimerTask;
 
 public class Reservation {
 
-	Timer timer;
-	Garage garage;
-	GarageDatabase garageDatabase;
-
-	public Reservation(int seconds, Garage garage, GarageDatabase garageDatabase, Driver driver,
-			PaymentDatabase paymentDatabase) {
+	private Timer timer;
+	private Garage garage;
+	private Database database;
+	
+	public Reservation(int seconds, Garage garage, Database database, Driver driver) {
 		this.garage = garage;
-		this.garageDatabase = garageDatabase;
 		this.timer = new Timer();
-		this.timer.schedule(new Verification(garage, garageDatabase, driver, paymentDatabase), seconds * 1000);
+		this.timer.schedule(new Verification(garage, database, driver), seconds * 1000);
 	}
 
 	public void cancelReservation() {
 		System.out.println("You've cancel the reservation");
-		this.garageDatabase.enableGarage(this.garage, this);
+		this.database.garageDatabase.enableGarage(this.garage, this);
 		timer.cancel();
 	}
 
 	class Verification extends TimerTask {
 		Garage garage;
-		GarageDatabase garageDatabase;
 		Driver driver;
-		PaymentDatabase paymentDatabase;
+		Database database;
 
-		public Verification(Garage garage, GarageDatabase garageDatabase, Driver driver,
-				PaymentDatabase paymentDatabase) {
+		public Verification(Garage garage, Database database, Driver driver) {
+			this.database = database;
 			this.garage = garage;
 			this.driver = driver;
-			this.garageDatabase = garageDatabase;
-			this.paymentDatabase = paymentDatabase;
 		}
 
 		public void run() {
@@ -43,10 +38,10 @@ public class Reservation {
 				System.out.println("Drive is in the garage");
 			} else {
 				if (this.garage.isOpen()) {
-					this.garageDatabase.enableGarage(this.garage, this);
+					this.database.garageDatabase.enableGarage(this.garage, this);
 				}
 
-				this.paymentDatabase.addPayment(new Payment(this));
+				this.database.paymentDatabase.addPayment(new Payment(this));
 				
 				System.out.println("route number: " + this.driver.getActualRouteNumber());
 				

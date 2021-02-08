@@ -13,22 +13,14 @@ public class Driver {
 	private int numberOfEvaluations;
 	private Garage garage;
 	private Manager manager;	
-	private GarageDatabase garageDatabase;
 	private Reservation reservation;
 	private int reservationTime;
 	private Car car;
-	private PaymentDatabase paymentDatabase;
-	private RefundDatabase refundDatabase;
-	private ComplaintDatabase complaintDatabase;
 	private int actualRouteNumber;
+	private Database database;
 	
-	public Driver(GarageDatabase garageDatabase, Car car, 
-			PaymentDatabase paymentDatabase, RefundDatabase refundDatabase, 
-				ComplaintDatabase complaintDatabase){
-		this.paymentDatabase = paymentDatabase;
-		this.garageDatabase = garageDatabase;
-		this.refundDatabase = refundDatabase;
-		this.complaintDatabase = complaintDatabase;
+	public Driver(Car car, Database database){
+		this.database = database;
 		this.car = car;
 		this.score = 0;
 	}
@@ -39,13 +31,13 @@ public class Driver {
 		System.out.println("How many time do you wanna for your reservation?");
         this.reservationTime = in.nextInt();
         
-		this.garage = garageDatabase.searchTheClosestGarage(this);
+		this.garage = database.garageDatabase.searchTheClosestGarage(this);
 		
 		if(this.garage != null) {
-			garageDatabase.disableGarage(garage, this);	
-			garageDatabase.showRoute(this.location, this.garage.getLocation());			 
+			database.garageDatabase.disableGarage(garage, this);	
+			database.garageDatabase.showRoute(this.location, this.garage.getLocation());			 
 			
-			this.actualRouteNumber = garageDatabase.getRoute().getRouteNumber() - 1;
+			this.actualRouteNumber = database.garageDatabase.getRoute().getRouteNumber() - 1;
 			
 			Scanner system = new Scanner(System.in);
 			
@@ -54,19 +46,19 @@ public class Driver {
 	        
 	        if(answer.equals("yes")) {	            
 	            System.out.println("You've reserved the garage " + this.garage.getName()); 
-	          	reservation = new Reservation(30, garage, garageDatabase, 
-	          			this, this.paymentDatabase);        	       	
+	          	reservation = new Reservation(30, garage, this.database, this);        	       	
 	        }else {
 	        	System.out.println("Ty for your interest");
 	        	RoutesManangement.deleteRoute(this.actualRouteNumber);
 	        	
 	        	if(this.garage.isOpen()) {
-	        		garageDatabase.enableGarage(garage, this);
+	        		this.database.garageDatabase.enableGarage(garage, this);
 	        	}        	
 	        }
 		}else {
 			System.out.println("I'm sorry, there's no garages available for your right now");
-		}		
+		}	
+		
 	}
 	
 	public void cancelReservation() {
@@ -75,7 +67,7 @@ public class Driver {
 	}
 	
 	public void pay() {
-		paymentDatabase.addPayment(new Payment(this));
+		this.database.paymentDatabase.addPayment(new Payment(this));
 	}
 	
 	public void confirmCheckIn() {
@@ -88,12 +80,12 @@ public class Driver {
 	}
 	
 	public void newRefundSolicitation(String reason, int paymentIndex) {
-		this.refundDatabase.add(new RefundSolicitation(this, 
-				this.paymentDatabase.getPayment(paymentIndex), reason));
+		this.database.refundDatabase.add(new RefundSolicitation(this, 
+				this.database.paymentDatabase.getPayment(paymentIndex), reason));
 	}
 	
 	public void subimitComplaint(String content) {
-		this.complaintDatabase.add(new Complaint(this, content));
+		this.database.complaintsDatabase.add(new Complaint(this, content));
 	}
 	
 	public void evaluate(int evaluation) {
@@ -131,5 +123,9 @@ public class Driver {
 
 	public void setCar(Car car) {
 		this.car = car;
+	}
+
+	public void isSubscribed () throws DriverUnsubscribed {
+		
 	}
 }

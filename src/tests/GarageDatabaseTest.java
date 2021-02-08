@@ -48,9 +48,7 @@ class GarageDatabaseTest {
 		Garage garage1 = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE",CONSTANT_LENGTH, CONSTANT_LENGTH);
 		Garage garage2 = new Garage("-1.4454059,-48.4859705", "UATA?!UMARIZAL",CONSTANT_LENGTH, CONSTANT_LENGTH);
 		Garage garage3 = new Garage("-1.3566207,-48.4537499", "UATA?!AUGUSTOMONTENEGRO",CONSTANT_LENGTH, CONSTANT_LENGTH);
-		
-		
-		
+				
 		RouteCalculation routes = new RouteCalculation();
 		GarageDatabase data = new GarageDatabase(routes);
 		data.enableGarage(garage1, data);
@@ -58,8 +56,8 @@ class GarageDatabaseTest {
 		data.enableGarage(garage3, data);
 		
 		Car car = new Car("JTDZN3EU0E3298500");
-		PaymentDatabase PaymentDatabase = new PaymentDatabase();
-		Driver driver = new Driver(data, car, PaymentDatabase, null, null);
+		
+		Driver driver = new Driver(car, null);
 		driver.setLocation("-1.3688387,-48.4719525");
 		
 		//Garage closestGarage = data.searchTheClosestGarage(jhow);

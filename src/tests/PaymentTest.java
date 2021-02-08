@@ -16,7 +16,7 @@ class PaymentTest {
 		GarageDatabase garageDatabase = new GarageDatabase(routes);
 		Garage garage = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
 		PaymentDatabase paymentDatabase = new PaymentDatabase();
-		Driver driver = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase, null, null);
+		Driver driver = new Driver(new Car("JTDZN3EU0E3298500"), null);
 		Host host = new Host("João", "000.000.000-00", "xxx", "", garage, null);
 		
 		BigDecimal serviceFee = BigDecimal.valueOf(0.05);

@@ -77,10 +77,10 @@ class HostTest {
 		host_andre.enableGarage(garageDatabase);
 		
 		PaymentDatabase paymentDatabase = new PaymentDatabase();
-		Driver driver_pedro = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase, null, null);
+		Driver driver_pedro = new Driver(new Car("JTDZN3EU0E3298500"), null);
 		host_joao.getGarage().setTimeCheckIn(driver_pedro);
 		
-		Driver driver_tiago = new Driver(garageDatabase, new Car("JTDZN3EU0E3298500"), paymentDatabase, null, null);
+		Driver driver_tiago = new Driver(new Car("JTDZN3EU0E3298500"), null);
 		host_paulo.getGarage().setTimeCheckIn(driver_tiago);
 		
 		host_joao.confirmCheckIn(garageDatabase);

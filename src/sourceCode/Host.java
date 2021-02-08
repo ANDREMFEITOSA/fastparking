@@ -10,10 +10,10 @@ public class Host {
 	private String account;
 	private Garage garage;
 	private int score;
-	private ComplaintDatabase complaintDatabase;
+	private ComplaintsDatabase complaintDatabase;
 	
 	public Host(String name, String cpf, String proofOfAddress, String account,
-			Garage garage, ComplaintDatabase complaintDatabase) {
+			Garage garage, ComplaintsDatabase complaintDatabase) {
 		this.name = name;
 		this.cpf = cpf;
 		this.proofOfAddress = proofOfAddress;

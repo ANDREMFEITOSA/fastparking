@@ -12,6 +12,8 @@ class DriverTest {
 
 	@Test
 	void reserveGarage() throws InterruptedException{
+		Database database = new Database();
+		
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage uata = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE", CONSTANT_LENGTH, CONSTANT_LENGTH);
 		uata.setCloseTime(30);
@@ -20,16 +22,12 @@ class DriverTest {
 		BigDecimal width = new BigDecimal("3");
 		Garage momsHome = new Garage("-1.4110308,-48.4732266", "momshome", length, width);
 		momsHome.setCloseTime(30);
-		
-		RouteCalculation route = new RouteCalculation();
-		
-		GarageDatabase data = new GarageDatabase(route);
-		data.enableGarage(uata, data);
-		data.enableGarage(momsHome, data);
-		
+				
+		database.garageDatabase.enableGarage(uata, this);
+				
 		Car car = new Car("JTDZN3EU0E3298500");
-		PaymentDatabase paymentDatabase = new PaymentDatabase();
-		Driver driver = new Driver(data, car, paymentDatabase, null, null);		
+		
+		Driver driver = new Driver(car, database);		
 		driver.setLocation("-1.3688387,-48.4719525");
 		
 		driver.reserveGarage();
@@ -59,4 +57,5 @@ class DriverTest {
 		
 		//Thread.sleep(40 * 1000);*/
 	}
+		
 }
