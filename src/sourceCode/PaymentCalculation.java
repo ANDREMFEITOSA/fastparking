@@ -23,6 +23,7 @@ public class PaymentCalculation {
 	}
 	
 	public BigDecimal driverPaymentAmount() {
+		this.rentalPrice = garage.getPrice().multiply(garage.getDuration());
 		
 		return this.rentalPrice;
 		

@@ -6,6 +6,6 @@ public class Database {
 	public RouteCalculation routeCalculation = new RouteCalculation();
 	public GarageDatabase garageDatabase = new GarageDatabase(routeCalculation);
 	public PaymentDatabase paymentDatabase = new PaymentDatabase();
-	public RefundDatabase refundDatabase = new RefundDatabase();
+	public RefundSolicitationDatabase refundDatabase = new RefundSolicitationDatabase();
 	public HostsDatabase hostsDatabase = new HostsDatabase();
 }

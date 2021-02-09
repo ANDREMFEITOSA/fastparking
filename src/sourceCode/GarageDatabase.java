@@ -34,7 +34,10 @@ public class GarageDatabase {
 		GarageSearch search = new GarageSearch();
 		
 		if (this.possibleGarages(driver).size() > 0) {
-			return search.closestGarage(this.possibleGarages(driver), driver);
+			Garage closestGarage = search.closestGarage(this.possibleGarages(driver), driver);
+			closestGarage.newSearch();
+			
+			return closestGarage;
 		} else {
 			return null;
 		}

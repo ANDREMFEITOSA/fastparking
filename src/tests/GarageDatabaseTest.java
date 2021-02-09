@@ -46,25 +46,26 @@ class GarageDatabaseTest {
 	void closestGarageTest() {
 		BigDecimal CONSTANT_LENGTH = new BigDecimal("1000");
 		Garage garage1 = new Garage("-1.4313795,-48.4625459", "UATA?!DUQUE",CONSTANT_LENGTH, CONSTANT_LENGTH);
+		garage1.setCloseTime(30);
 		Garage garage2 = new Garage("-1.4454059,-48.4859705", "UATA?!UMARIZAL",CONSTANT_LENGTH, CONSTANT_LENGTH);
+		garage2.setCloseTime(30);
 		Garage garage3 = new Garage("-1.3566207,-48.4537499", "UATA?!AUGUSTOMONTENEGRO",CONSTANT_LENGTH, CONSTANT_LENGTH);
-				
-		RouteCalculation routes = new RouteCalculation();
-		GarageDatabase data = new GarageDatabase(routes);
-		data.enableGarage(garage1, data);
-		data.enableGarage(garage2, data);
-		data.enableGarage(garage3, data);
+		garage3.setCloseTime(30);
+		
+		Database data = new Database();
+		
+		data.garageDatabase.enableGarage(garage1, data);
+		data.garageDatabase.enableGarage(garage2, data);
+		data.garageDatabase.enableGarage(garage3, data);
 		
 		Car car = new Car("JTDZN3EU0E3298500");
 		
-		Driver driver = new Driver(car, null, null);
+		Driver driver = new Driver(car, data, null);
 		driver.setLocation("-1.3688387,-48.4719525");
 		
-		//Garage closestGarage = data.searchTheClosestGarage(jhow);
+		Garage closestGarage = data.garageDatabase.searchTheClosestGarage(driver);
 		
-		//System.out.println(closestGarage.getName());
-		
-		//Assertions.assertEquals(garage3, closestGarage);
+		Assertions.assertEquals(garage3, closestGarage);
 	}
 	
 	@Test

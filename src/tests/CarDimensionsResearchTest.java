@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.math.BigDecimal;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import sourceCode.*;
@@ -17,6 +18,7 @@ class CarDimensionsResearchTest {
 		specResearch.request(vin);
 		BigDecimal length = specResearch.getLength();
 		
+		Assertions.assertEquals(new BigDecimal("4.62"), length);
 	}
 	
 	@Test
@@ -26,6 +28,8 @@ class CarDimensionsResearchTest {
 		
 		specResearch.request(vin);
 		BigDecimal width = specResearch.getWidth();	
+		
+		Assertions.assertEquals(new BigDecimal("1.78"), width);
 	}
 
 }

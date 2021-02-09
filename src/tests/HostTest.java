@@ -83,8 +83,6 @@ class HostTest {
 				
 		Host host_joao = new Host("João", "", garage_joao, database);
 		
-		database.hostsDatabase.add(host_joao);
-		
 		host_joao.enableGarage();
 		
 		Driver driver_pedro = new Driver(new Car("JTDZN3EU0E3298500"), database, "Pedro");
@@ -92,6 +90,8 @@ class HostTest {
 		driver_pedro.setLocation("-1.3688387,-48.4719525");
 		
 		driver_pedro.reserveGarage(15, "yes");
+		
+		Thread.sleep(1 * 1000);//need to open the html file
 		
 		driver_pedro.confirmCheckIn();
 		
@@ -106,8 +106,5 @@ class HostTest {
 		
 		Assertions.assertEquals("35", garage_joao.getDuration().toPlainString());
 		
-		System.out.println("Duracao da reserva:" + garage_joao.getDuration().toPlainString());
-		
-		Thread.sleep(10 * 1000);
 	}
 }

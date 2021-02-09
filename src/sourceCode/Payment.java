@@ -14,10 +14,14 @@ public class Payment {
 	public Payment(Object obj){
 		if(obj instanceof Driver) {
 			PaymentCalculation paymentCalculation = new PaymentCalculation(((Driver) obj).getGarage());
+			
 			this.driver = (Driver) obj;
+			
 			this.valueDriver = paymentCalculation.driverPaymentAmount().
-					subtract(this.driver.getCredit());
+						subtract(this.driver.getCredit());
+						
 			this.valueHost = paymentCalculation.hostPaymentAmount();
+			
 			this.host = this.driver.getGarage().getHost();
 			}else if(obj instanceof Verification){
 			PaymentCalculation paymentCalculation = new PaymentCalculation(((Verification) obj).getDriver().getGarage());

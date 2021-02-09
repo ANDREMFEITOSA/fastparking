@@ -3,7 +3,7 @@ package sourceCode;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RefundDatabase {
+public class RefundSolicitationDatabase {
 	List<RefundSolicitation> refundSolicitationList = new ArrayList<>();
 	
 	public void add(RefundSolicitation refund) {
@@ -15,6 +15,11 @@ public class RefundDatabase {
 	}
 	
 	public RefundSolicitation getNext() {
-		return refundSolicitationList.get(0);
+		if(this.refundSolicitationList.size() > 0) {
+			return refundSolicitationList.get(0);
+		}else {
+			return null;
+		}
+		
 	}
 }

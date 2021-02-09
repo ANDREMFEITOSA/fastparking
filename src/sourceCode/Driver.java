@@ -22,7 +22,7 @@ public class Driver {
 		this.car = car;
 		this.score = new BigDecimal("0");
 		this.name = name;
-		this.credit = new BigDecimal("0");
+		this.credit = BigDecimal.ZERO;
 		
 		database.driversDatabase.add(this);
 	}
@@ -42,8 +42,8 @@ public class Driver {
 				this.actualRouteNumber = database.garageDatabase.getRoute().getRouteNumber() - 1;
 				
 				if(answer.equals("yes")) {	            
-		            System.out.println("You've reserved the garage " + this.garage.getName()); 
-		          	reservation = new Reservation(12, garage, this.database, this);        	       	
+		            System.out.println(this.name + ", You've reserved the "+ this.garage.getName() +" garage" ); 
+		          	this.reservation = new Reservation(12, garage, this.database, this);        	       	
 		        }else {
 		        	System.out.println("Ty for your interest");
 		        	RoutesManangement.deleteRoute(this.actualRouteNumber);
@@ -64,8 +64,7 @@ public class Driver {
 	
 	public void cancelReservation() {	
 		try {
-			this.subscriptionVerification();
-			
+			this.subscriptionVerification();			
 			this.reservation.cancelReservation();
 			RoutesManangement.deleteRoute(this.actualRouteNumber);
 		} catch (SubscriptionNotFoundException e) {
@@ -78,7 +77,7 @@ public class Driver {
 		try {
 			this.subscriptionVerification();
 			this.database.paymentDatabase.addPayment(new Payment(this));
-			this.credit = new BigDecimal("0");
+			this.credit = BigDecimal.ZERO;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
@@ -229,7 +228,7 @@ public class Driver {
 	public void subscriptionVerification () throws SubscriptionNotFoundException{
 		if(!this.database.driversDatabase.isSubscribed(this)) {
 			throw new SubscriptionNotFoundException(this.name + 
-					" You're not subscribed in our platform.");
+					", You're not subscribed in our platform.");
 		}
 	}
 

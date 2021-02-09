@@ -103,7 +103,7 @@ public class Host {
 	public void subscriptionVerification () throws SubscriptionNotFoundException{
 		if(!this.database.hostsDatabase.isSubscribed(this)) {
 			throw new SubscriptionNotFoundException(this.name + 
-					" You're not subscribed in our platform.");
+					", You're not subscribed in our platform.");
 		}
 	}
 }
