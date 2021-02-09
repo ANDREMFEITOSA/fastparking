@@ -21,12 +21,6 @@ class HostTest {
 	@Test
 	void enableGarageTest() {
 		
-		RouteCalculation route = new RouteCalculation();
-		
-		GarageDatabase garageDatabase = new GarageDatabase(route);
-		
-		ComplaintsDatabase complaintDatabase = new ComplaintsDatabase();
-		
 		Database database = new Database();
 		
 		Garage garage_joao = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
@@ -37,24 +31,26 @@ class HostTest {
 		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, database);
 		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, database);
 		
-		host_joao.enableGarage(garageDatabase);
-		host_paulo.enableGarage(garageDatabase);
-		host_andre.enableGarage(garageDatabase);
+		database.hostsDatabase.add(host_joao);
+		database.hostsDatabase.add(host_paulo);
+		database.hostsDatabase.add(host_andre);
 		
-		Assertions.assertEquals(3, garageDatabase.getNumberOfAvailableGarages());
+		host_joao.enableGarage();
+		host_paulo.enableGarage();
+		host_andre.enableGarage();
+		
+		Assertions.assertEquals(3, database.garageDatabase.getNumberOfAvailableGarages());
 	}
 	
 	@Test
 	void disableGarageTest() {
+		
 		RouteCalculation route = new RouteCalculation();
 		
 		GarageDatabase garageDatabase = new GarageDatabase(route);
-		
-		ComplaintsDatabase complaintDatabase = new ComplaintsDatabase();
-		
+
 		Database database = new Database();
-		
-		
+	
 		Garage garage_joao = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
@@ -63,67 +59,55 @@ class HostTest {
 		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy","", garage_paulo, database);
 		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, database);
 		
-		host_joao.enableGarage(garageDatabase);
-		host_paulo.enableGarage(garageDatabase);
-		host_andre.enableGarage(garageDatabase);
+		database.hostsDatabase.add(host_joao);
+		database.hostsDatabase.add(host_paulo);
+		database.hostsDatabase.add(host_andre);
 		
-		host_joao.disableGarage(garageDatabase);
+		host_joao.enableGarage();
+		host_paulo.enableGarage();
+		host_andre.enableGarage();
 		
-		Assertions.assertEquals(2, garageDatabase.getNumberOfAvailableGarages());
+		host_joao.disableGarage();
+		
+		Assertions.assertEquals(2, database.garageDatabase.getNumberOfAvailableGarages());
 	}
 	
 	@Test
 	void confirmCheckInAndChekOutTest() throws InterruptedException {
 		
-		RouteCalculation route = new RouteCalculation();
-		
-		GarageDatabase garageDatabase = new GarageDatabase(route);
-		
 		Database database = new Database();
 		
-		Garage garage_joao = new Garage("Antônio Barreto", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
-		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
-		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
+		Garage garage_joao = new Garage("-1.4313795,-48.4625459", "Uata", new BigDecimal("1000"), new BigDecimal("1000"));
 		
+		garage_joao.setCloseTime(30);
+				
 		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, database);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, database);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, database);
 		
-		host_joao.enableGarage(garageDatabase);
-		host_paulo.enableGarage(garageDatabase);
-		host_andre.enableGarage(garageDatabase);
+		database.hostsDatabase.add(host_joao);
 		
-		host_joao.confirmCheckIn(garageDatabase);
-		host_paulo.confirmCheckIn(garageDatabase);
-		host_andre.confirmCheckIn(garageDatabase);
+		host_joao.enableGarage();
 		
-		Driver driver_pedro = new Driver(new Car("JTDZN3EU0E3298500"), null, null);
-		Driver driver_tiago = new Driver(new Car("JTDZN3EU0E3298500"), null, null);
-		Driver driver_jose = new Driver(new Car("JTDZN3EU0E3298500"), null, null);
+		Driver driver_pedro = new Driver(new Car("JTDZN3EU0E3298500"), database, "Pedro");
+		
+		driver_pedro.setLocation("-1.3688387,-48.4719525");
+		
+		driver_pedro.reserveGarage();
 		
 		driver_pedro.confirmCheckIn();
-		driver_tiago.confirmCheckIn();
-		driver_jose.confirmCheckIn();
 		
-		int seconds = 2;
+		host_joao.confirmCheckIn();
+		
+		int seconds = 35;
 		Thread.sleep(seconds * 1000);
 		
-		host_joao.confirmCheckOut();
-		host_paulo.confirmCheckOut();
-		host_andre.confirmCheckOut();
-
-		driver_pedro.ConfirmCheckOut();
-		driver_tiago.ConfirmCheckOut();
-		driver_jose.ConfirmCheckOut();
+		host_joao.confirmCheckOut(5);
 		
-		garage_joao.getDuration();
-		garage_paulo.getDuration();
-		garage_andre.getDuration();
+		driver_pedro.ConfirmCheckOut(5);
 		
-		Assertions.assertEquals(3, garageDatabase.getNumberOfAvailableGarages());
+		Assertions.assertEquals("35", garage_joao.getDuration().toPlainString());
 		
-		Assertions.assertEquals("2", garage_joao.getDuration().toPlainString());
-		Assertions.assertEquals("2", garage_paulo.getDuration().toPlainString());
-		Assertions.assertEquals("2", garage_andre.getDuration().toPlainString());
+		System.out.println("Duracao da reserva:" + garage_joao.getDuration().toPlainString());
+		
+		Thread.sleep(10 * 1000);
 	}
 }
