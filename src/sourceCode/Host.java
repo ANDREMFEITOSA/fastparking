@@ -18,6 +18,8 @@ public class Host {
 		this.database = database;
 		this.score = new BigDecimal("0");
 		this.garage.setHost(this);
+		
+		this.database.hostsDatabase.add(this);
 	}
 
 	public void enableGarage() {
