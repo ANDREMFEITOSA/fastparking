@@ -27,14 +27,11 @@ public class Driver {
 		database.driversDatabase.add(this);
 	}
 	
-	public void reserveGarage () {
+	public void reserveGarage (int reservationTime, String answer) {
 		try {
 			this.subscriptionVerification();
-			
-			Scanner in = new Scanner(System.in);
-			
-			System.out.println(this.name + ", how much time do you wanna for your reservation?");
-	        this.reservationTime = in.nextInt();
+						
+	        this.reservationTime = reservationTime;
 	        
 			this.garage = database.garageDatabase.searchTheClosestGarage(this);
 			
@@ -44,12 +41,7 @@ public class Driver {
 				
 				this.actualRouteNumber = database.garageDatabase.getRoute().getRouteNumber() - 1;
 				
-				Scanner system = new Scanner(System.in);
-				
-				System.out.println(this.name + ", do you wanna reserv this garage? yes or no!");
-		        String answer = system.nextLine(); 
-		        
-		        if(answer.equals("yes")) {	            
+				if(answer.equals("yes")) {	            
 		            System.out.println("You've reserved the garage " + this.garage.getName()); 
 		          	reservation = new Reservation(15, garage, this.database, this);        	       	
 		        }else {

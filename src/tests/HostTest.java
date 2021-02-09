@@ -91,7 +91,7 @@ class HostTest {
 		
 		driver_pedro.setLocation("-1.3688387,-48.4719525");
 		
-		driver_pedro.reserveGarage();
+		driver_pedro.reserveGarage(15, "yes");
 		
 		driver_pedro.confirmCheckIn();
 		

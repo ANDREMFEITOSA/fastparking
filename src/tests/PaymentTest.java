@@ -28,7 +28,7 @@ class PaymentTest {
 		
 		driver_pedro.setLocation("-1.3688387,-48.4719525");
 		
-		driver_pedro.reserveGarage();
+		driver_pedro.reserveGarage(10, "yes");
 		
 		driver_pedro.confirmCheckIn();
 		
@@ -69,7 +69,7 @@ class PaymentTest {
 		
 		driver_pedro.setLocation("-1.3688387,-48.4719525");
 		
-		driver_pedro.reserveGarage();
+		driver_pedro.reserveGarage(15, "yes");
 		
 		Thread.sleep(16 * 1000);
 		

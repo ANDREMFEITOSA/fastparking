@@ -32,7 +32,7 @@ class DriverTest {
 						
 		driver.setLocation("-1.3688387,-48.4719525");
 				
-		driver.reserveGarage();
+		driver.reserveGarage(15, "yes");
 		
 		Thread.sleep(31 * 1000);
 	}
