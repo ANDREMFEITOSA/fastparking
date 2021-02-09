@@ -27,9 +27,9 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, database);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy", "", garage_paulo, database);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, database);
+		Host host_joao = new Host("João", "", garage_joao, database);
+		Host host_paulo = new Host("Paulo", "", garage_paulo, database);
+		Host host_andre = new Host("Andre", "", garage_paulo, database);
 		
 		database.hostsDatabase.add(host_joao);
 		database.hostsDatabase.add(host_paulo);
@@ -55,9 +55,9 @@ class HostTest {
 		Garage garage_paulo = new Garage("Boa Ventura", "Vikings", new BigDecimal("1000"), new BigDecimal("1000"));
 		Garage garage_andre = new Garage("Oliveira Belo", "El Patron", new BigDecimal("1000"), new BigDecimal("1000"));
 		
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, database);
-		Host host_paulo = new Host("Paulo", "222.000.000-02", "yyy","", garage_paulo, database);
-		Host host_andre = new Host("Andre", "333.000.000-03", "zzz", "", garage_paulo, database);
+		Host host_joao = new Host("João", "", garage_joao, database);
+		Host host_paulo = new Host("Paulo", "", garage_paulo, database);
+		Host host_andre = new Host("Andre", "", garage_paulo, database);
 		
 		database.hostsDatabase.add(host_joao);
 		database.hostsDatabase.add(host_paulo);
@@ -81,7 +81,7 @@ class HostTest {
 		
 		garage_joao.setCloseTime(30);
 				
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, database);
+		Host host_joao = new Host("João", "", garage_joao, database);
 		
 		database.hostsDatabase.add(host_joao);
 		

@@ -5,19 +5,14 @@ import java.math.BigDecimal;
 public class Host {
 	
 	private String name;
-	private String cpf;
-	private String proofOfAddress;
 	private String account;
 	private Garage garage;
 	private int numberOfEvaluations;
 	private BigDecimal score;
 	private Database database;
 	
-	public Host(String name, String cpf, String proofOfAddress, String account,
-			Garage garage, Database database) {
+	public Host(String name, String account, Garage garage, Database database) {
 		this.name = name;
-		this.cpf = cpf;
-		this.proofOfAddress = proofOfAddress;
 		this.account = account;
 		this.garage = garage;
 		this.database = database;
