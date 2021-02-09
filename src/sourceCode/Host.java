@@ -1,6 +1,6 @@
 package sourceCode;
 
-import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 public class Host {
 	
@@ -9,8 +9,8 @@ public class Host {
 	private String proofOfAddress;
 	private String account;
 	private Garage garage;
-	private int score;
-	private ComplaintsDatabase complaintDatabase;
+	private int numberOfEvaluations;
+	private BigDecimal score;
 	private Database database;
 	
 	public Host(String name, String cpf, String proofOfAddress, String account,
@@ -20,35 +20,56 @@ public class Host {
 		this.proofOfAddress = proofOfAddress;
 		this.account = account;
 		this.garage = garage;
-		this.complaintDatabase = complaintDatabase;
 		this.database = database;
-		this.score = 0;
+		this.score = new BigDecimal("0");
 		this.garage.setHost(this);
 	}
 
-	public void enableGarage(GarageDatabase garageDatabase) {
-		
-		garageDatabase.enableGarage(this.garage, this);
-		
+	public void enableGarage() {
+		try {
+			this.isSubscribed();
+			this.database.garageDatabase.enableGarage(this.garage, this);
+		} catch (SubscriptionNotFoundException e) {
+			System.out.println(e.getMessage());
+		}	
 	}
 	
-	public void disableGarage(GarageDatabase garageDatabase) {
-		
-		garageDatabase.disableGarage(this.garage, this);
-		
+	public void disableGarage() {
+		try {
+			this.isSubscribed();
+			this.database.garageDatabase.disableGarage(this.garage, this);
+		} catch (SubscriptionNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
-	public void confirmCheckIn(GarageDatabase garageDatabase) {
-		this.garage.setTimeCheckIn(this);
-		this.disableGarage(garageDatabase);
+	public void confirmCheckIn() {
+		try {
+			this.isSubscribed();
+			this.garage.setTimeCheckIn(this);
+			this.disableGarage();
+		} catch (SubscriptionNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
-	public void confirmCheckOut() {
-		this.garage.setTimeCheckOut(this);
+	public void confirmCheckOut(int evaluation) {
+		try {
+			this.isSubscribed();
+			this.garage.setTimeCheckOut(this, evaluation);
+		} catch (SubscriptionNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public Garage getGarage() {
-		return this.garage;
+		try {
+			this.isSubscribed();
+			return this.garage;
+		} catch (SubscriptionNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 	
 	public void subimitComplaint(String content) {
@@ -60,12 +81,26 @@ public class Host {
 		}
 	}
 		
-	public void evaluateDriver(GarageDatabase garageDatabase, Driver driver) {
-		
+	public void evaluate(int evaluation) {
+		try {
+			this.isSubscribed();
+			numberOfEvaluations++;
+			BigDecimal actualScorePlusNewScore = score.add(new BigDecimal(String.valueOf(evaluation)));
+			BigDecimal numberOfEvaluation = new BigDecimal(String.valueOf(numberOfEvaluations));
+			score = actualScorePlusNewScore.divide(numberOfEvaluation);
+		} catch (SubscriptionNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	public String getBankAccount() {
-		return this.account;
+		try {
+			this.isSubscribed();
+			return this.account;
+		} catch (SubscriptionNotFoundException e) {
+			System.out.println(e.getMessage());
+		}
+		return null;
 	}
 	
 	public void isSubscribed () throws SubscriptionNotFoundException{
