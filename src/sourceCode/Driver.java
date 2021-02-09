@@ -43,7 +43,7 @@ public class Driver {
 				
 				if(answer.equals("yes")) {	            
 		            System.out.println("You've reserved the garage " + this.garage.getName()); 
-		          	reservation = new Reservation(1, garage, this.database, this);        	       	
+		          	reservation = new Reservation(8, garage, this.database, this);        	       	
 		        }else {
 		        	System.out.println("Ty for your interest");
 		        	RoutesManangement.deleteRoute(this.actualRouteNumber);
