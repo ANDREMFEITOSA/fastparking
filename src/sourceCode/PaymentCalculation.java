@@ -1,9 +1,6 @@
 package sourceCode;
 
 import java.math.BigDecimal;
-import java.text.NumberFormat;
-import java.time.Duration;
-import java.time.LocalDateTime;
 
 public class PaymentCalculation {
 	

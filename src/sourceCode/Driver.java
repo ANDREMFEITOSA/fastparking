@@ -1,7 +1,6 @@
 package sourceCode;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Driver {	
