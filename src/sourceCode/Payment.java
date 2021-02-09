@@ -14,7 +14,8 @@ public class Payment {
 	public Payment(Object obj){
 		if(obj instanceof Driver) {
 			PaymentCalculation paymentCalculation = new PaymentCalculation(((Driver) obj).getGarage());
-			this.valueDriver = paymentCalculation.driverPaymentAmount();
+			this.valueDriver = paymentCalculation.driverPaymentAmount().
+					subtract(((Driver) obj).getCredit());
 			this.valueHost = paymentCalculation.hostPaymentAmount();
 			this.host = ((Driver) obj).getGarage().getHost();
 			this.driver = ((Driver) obj);
@@ -27,11 +28,6 @@ public class Payment {
 					.getPrice().divide(new BigDecimal("2"));
 			this.valueHost = this.valueDriver
 					.multiply(BigDecimal.ONE.subtract(paymentCalculation.getServiceFee()));
-		}else if(obj instanceof Payment) {
-			this.driver = ((Payment) obj).getDriver();
-			this.host = null;
-			this.valueDriver = ((Payment) obj).getValueDriver();
-			this.valueHost = null;
 		}
 	}
 	

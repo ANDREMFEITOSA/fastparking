@@ -14,7 +14,7 @@ public class Manager {
 	}
 
 	public void authorizeRefund(Payment payment) {
-		this.database.paymentDatabase.addPayment(new Payment(payment));
+		payment.getDriver().setCredit(payment.getValueDriver());
 	}
 
 	public void unsubscribeDriver(Driver driver) {

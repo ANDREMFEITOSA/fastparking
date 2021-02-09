@@ -6,25 +6,24 @@ import java.util.Scanner;
 
 public class Driver {	
 	private String name;
-	private String cpf;
-	private String carDocument;
 	private String location;
 	private String card;
 	private BigDecimal score;
 	private int numberOfEvaluations;
 	private Garage garage;
-	private Manager manager;	
 	private Reservation reservation;
 	private int reservationTime;
 	private Car car;
 	private int actualRouteNumber;
 	private Database database;
+	private BigDecimal credit;
 	
 	public Driver(Car car, Database database, String name){
 		this.database = database;
 		this.car = car;
 		this.score = new BigDecimal("0");
 		this.name = name;
+		this.credit = new BigDecimal("0");
 		
 		database.driversDatabase.add(this);
 	}
@@ -88,6 +87,7 @@ public class Driver {
 		try {
 			this.isSubscribed();
 			this.database.paymentDatabase.addPayment(new Payment(this));
+			this.credit = new BigDecimal("0");
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
@@ -248,5 +248,13 @@ public class Driver {
 
 	public BigDecimal getScore() {
 		return this.score;
+	}
+	
+	public void setCredit(BigDecimal credit) {
+		this.credit = credit;
+	}
+	
+	public BigDecimal getCredit() {
+		return this.credit;
 	}
 }
