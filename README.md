@@ -2,7 +2,7 @@
 Projeto de disciplina (PD) Programação II
 <h1>Sistema de locação rápida de garagem</h1>
 
-Modelo de operação do negócio
+<h4>Modelo de operação do negócio</h4>
 
 1 - Solicitação do usuário de garagens disponíveis
 
