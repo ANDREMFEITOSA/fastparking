@@ -82,6 +82,7 @@ public class Garage {
 
 	public void setTimeCheckOut(Object object, int evaluation) {
 		if(object instanceof Driver) {
+			this.getHost().evaluate(evaluation);
 			driverConfirmation = true;
 			driverIsInTheGarage = false;
 		}

@@ -18,7 +18,7 @@ class PaymentTest {
 		
 		garage_joao.setCloseTime(30);
 				
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, database);
+		Host host_joao = new Host("João", "", garage_joao, database);
 		
 		database.hostsDatabase.add(host_joao);
 		
@@ -59,7 +59,7 @@ class PaymentTest {
 		
 		garage_joao.setCloseTime(30);
 				
-		Host host_joao = new Host("João", "111.000.000-01", "xxx", "", garage_joao, database);
+		Host host_joao = new Host("João", "", garage_joao, database);
 		
 		database.hostsDatabase.add(host_joao);
 		
