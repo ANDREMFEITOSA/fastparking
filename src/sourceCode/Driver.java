@@ -30,7 +30,7 @@ public class Driver {
 	
 	public void reserveGarage () {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			
 			Scanner in = new Scanner(System.in);
 			
@@ -73,7 +73,7 @@ public class Driver {
 	
 	public void cancelReservation() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			
 			this.reservation.cancelReservation();
 			RoutesManangement.deleteRoute(this.actualRouteNumber);
@@ -85,7 +85,7 @@ public class Driver {
 	
 	public void pay() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			this.database.paymentDatabase.addPayment(new Payment(this));
 			this.credit = new BigDecimal("0");
 		} catch (SubscriptionNotFoundException e) {
@@ -96,7 +96,7 @@ public class Driver {
 	
 	public void confirmCheckIn() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			this.garage.setTimeCheckIn(this);
 			RoutesManangement.deleteRoute(this.actualRouteNumber);
 		} catch (SubscriptionNotFoundException e) {
@@ -107,7 +107,7 @@ public class Driver {
 	
 	public void ConfirmCheckOut(int evaluation) {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			this.garage.setTimeCheckOut(this, evaluation);
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -117,7 +117,7 @@ public class Driver {
 	
 	public void newRefundSolicitation(String reason, int paymentIndex) {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			
 			this.database.refundDatabase.add(new RefundSolicitation(this, 
 					this.database.paymentDatabase.getPayment(paymentIndex), reason));
@@ -129,7 +129,7 @@ public class Driver {
 	
 	public void subimitComplaint(String content) {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			this.database.complaintsDatabase.add(new Complaint(this, content));
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -139,7 +139,7 @@ public class Driver {
 	
 	public void evaluate(int evaluation) {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			numberOfEvaluations++;
 			
 			BigDecimal actualScorePlusNewScore = score.add(new BigDecimal(String.valueOf(evaluation)));
@@ -157,7 +157,7 @@ public class Driver {
 	
 	public String getLocation() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			return location;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -168,7 +168,7 @@ public class Driver {
 	
 	public void setLocation(String location) {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			this.location = location;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -177,7 +177,7 @@ public class Driver {
 	
 	public int getReservationTime() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			return this.reservationTime;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -187,7 +187,7 @@ public class Driver {
 	
 	public Garage getGarage() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			return this.garage;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -198,7 +198,7 @@ public class Driver {
 	
 	public Car getCar() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			return this.car;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -208,7 +208,7 @@ public class Driver {
 	
 	public String getCreditCard() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			return this.card;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -218,7 +218,7 @@ public class Driver {
 
 	public int getActualRouteNumber() {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			return this.actualRouteNumber;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
@@ -228,14 +228,14 @@ public class Driver {
 
 	public void setCar(Car car) {
 		try {
-			this.isSubscribed();
+			this.subscriptionVerification();
 			this.car = car;
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
 	}
 
-	public void isSubscribed () throws SubscriptionNotFoundException{
+	public void subscriptionVerification () throws SubscriptionNotFoundException{
 		if(!this.database.driversDatabase.isSubscribed(this)) {
 			throw new SubscriptionNotFoundException(this.name + 
 					" You're not subscribed in our platform.");
