@@ -1,5 +1,6 @@
 package sourceCode;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -9,7 +10,7 @@ public class Driver {
 	private String carDocument;
 	private String location;
 	private String card;
-	private float score;
+	private BigDecimal score;
 	private int numberOfEvaluations;
 	private Garage garage;
 	private Manager manager;	
@@ -22,7 +23,7 @@ public class Driver {
 	public Driver(Car car, Database database, String name){
 		this.database = database;
 		this.car = car;
-		this.score = 0;
+		this.score = new BigDecimal("0");
 		this.name = name;
 		
 		database.driversDatabase.add(this);
@@ -52,14 +53,16 @@ public class Driver {
 		        
 		        if(answer.equals("yes")) {	            
 		            System.out.println("You've reserved the garage " + this.garage.getName()); 
-		          	reservation = new Reservation(30, garage, this.database, this);        	       	
+		          	reservation = new Reservation(15, garage, this.database, this);        	       	
 		        }else {
 		        	System.out.println("Ty for your interest");
 		        	RoutesManangement.deleteRoute(this.actualRouteNumber);
 		        	
 		        	if(this.garage.isOpen()) {
 		        		this.database.garageDatabase.enableGarage(garage, this);
-		        	}        	
+		        	}     
+		        	
+		        	this.garage = null;
 		        }
 			}else {
 				System.out.println("I'm sorry, there's no garages available for your right now");
@@ -102,10 +105,10 @@ public class Driver {
 		
 	}
 	
-	public void ConfirmCheckOut() {
+	public void ConfirmCheckOut(int evaluation) {
 		try {
 			this.isSubscribed();
-			this.garage.setTimeCheckOut(this);
+			this.garage.setTimeCheckOut(this, evaluation);
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
@@ -138,7 +141,14 @@ public class Driver {
 		try {
 			this.isSubscribed();
 			numberOfEvaluations++;
-			score = (score + evaluation)/numberOfEvaluations;
+			
+			BigDecimal actualScorePlusNewScore = score.add(new BigDecimal(String.valueOf(evaluation)));
+			
+			BigDecimal numberOfEvaluation = new BigDecimal(String.valueOf(numberOfEvaluations));
+			
+			score = actualScorePlusNewScore.divide(numberOfEvaluation);
+					
+
 		} catch (SubscriptionNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
@@ -234,5 +244,9 @@ public class Driver {
 
 	public String getName() {
 		return this.name;
+	}
+
+	public BigDecimal getScore() {
+		return this.score;
 	}
 }
