@@ -147,11 +147,11 @@ public class Garage {
 	}
 
 	public String getStatus() {
-		if(searchesPerMonth() < 160) {
+		if(searchesPerMonth() < 3) {
 			this.status = "gold";
-		}else if(searchesPerMonth() >= 160 && searchesPerMonth() < 240) {
+		}else if(searchesPerMonth() >= 3 && searchesPerMonth() < 5) {
 			this.status = "platinum";
-		}else if(searchesPerMonth() > 240) {
+		}else if(searchesPerMonth() > 5) {
 			this.status = "black";
 		}
 		
