@@ -1,4 +1,4 @@
-	package sourceCode;
+package sourceCode;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -80,7 +80,7 @@ public class Garage {
 		return timeCheckOut;
 	}
 
-	public void setTimeCheckOut(Object object) {
+	public void setTimeCheckOut(Object object, int evaluation) {
 		if(object instanceof Driver) {
 			driverConfirmation = true;
 			driverIsInTheGarage = false;
@@ -88,6 +88,7 @@ public class Garage {
 		
 		if(object instanceof Host) {
 			hostConfirmation = true;
+			this.getDriver().evaluate(evaluation);
 		}
 		
 		if(hostConfirmation && driverConfirmation) {
