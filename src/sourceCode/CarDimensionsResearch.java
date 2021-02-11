@@ -11,7 +11,7 @@ import java.net.URL;
 
 public class CarDimensionsResearch {
 	private static HttpURLConnection connection;
-	private String key = "othsziul6_1v41nfav0_mevqsi7or";
+	private String key = "API_KEY";
 	private BufferedReader reader;
 	private String line;
 	private String responseContent;

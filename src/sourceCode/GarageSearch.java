@@ -11,7 +11,7 @@ import java.util.List;
 
 public class GarageSearch {
 	private static HttpURLConnection connection;
-	private String key = "AIzaSyDqGIMchOeXPAlfe1qzQjAlUt5QVf6lh8s";
+	private String key = "API_KEY";
 	private BufferedReader reader;
 	private String line;
 	private StringBuffer responseContent = new StringBuffer();

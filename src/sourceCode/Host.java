@@ -2,7 +2,7 @@ package sourceCode;
 
 import java.math.BigDecimal;
 
-public class Host {
+public class Host implements UsuariosComAcessoAGaragem{
 	
    	private String name;
 	private String account;

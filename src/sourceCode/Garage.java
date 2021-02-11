@@ -57,7 +57,7 @@ public class Garage {
 		return timeCheckIn;
 	}
 
-	public void setTimeCheckIn(Object object) {
+	public void setTimeCheckIn(UsuariosComAcessoAGaragem object) {
 		if(object instanceof Driver) {
 			Driver driver = (Driver) object;
 			this.driver = driver;

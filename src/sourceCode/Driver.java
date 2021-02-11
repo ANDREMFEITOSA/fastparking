@@ -3,7 +3,7 @@ package sourceCode;
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class Driver {	
+public class Driver implements UsuariosComAcessoAGaragem{	
 	private String name;
 	private String location;
 	private String card;
